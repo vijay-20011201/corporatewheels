@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cars - Corporate Wheel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            height: 250px;
+            background-image: url("images/carsbg.jpeg");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+        }
+
+        .hero-section h1 {
+            color: white;
+            font-size: 4rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 30px;
+        }
+
+        /* Sidebar Filters */
+        .filters-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .filter-section {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .filter-section h3 {
+            font-size: 1.1rem;
+            color: #0a2540;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .filter-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .filter-option input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-right: 10px;
+            cursor: pointer;
+            accent-color: #2563eb;
+        }
+
+        .filter-option label {
+            cursor: pointer;
+            font-size: 0.95rem;
+            color: #475569;
+        }
+
+        /* Price Range */
+        .price-inputs {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .price-inputs input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #e5e7eb;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        /* Cars Grid */
+        .cars-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .car-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .car-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .car-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            background: #f1f5f9;
+        }
+
+        .car-details {
+            padding: 20px;
+        }
+
+        .car-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 12px;
+        }
+
+        .car-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #0a2540;
+        }
+
+        .car-rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #64748b;
+            font-size: 0.85rem;
+        }
+
+        .car-specs {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .spec-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        .car-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .car-price {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .price-label {
+            font-size: 0.75rem;
+            color: #64748b;
+        }
+
+        .price-amount {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0a2540;
+        }
+
+        .book-btn {
+            background: #22c55e;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+
+        .book-btn:hover {
+            background: #16a34a;
+        }
+
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 60px 20px;
+            color: #64748b;
+            font-size: 1.2rem;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            background: #e0f2fe;
+            color: #0369a1;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        @media (max-width: 968px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+
+            .filters-sidebar {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .hero-section h1 {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .filters-sidebar {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+
+            .cars-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="header-container"></div>
+
+    <div class="hero-section">
+        <h1>Cars</h1>
+    </div>
+
+    <div class="main-content">
+        <!-- Filters Sidebar -->
+        <aside class="filters-sidebar">
+            <!-- Vehicle Type Filter -->
+            <div class="filter-section">
+                <h3>Vehicle Type</h3>
+                <div class="filter-option">
+                    <input type="checkbox" id="car" value="Car" onchange="filterCars()">
+                    <label for="car">Car</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="van" value="Van" onchange="filterCars()">
+                    <label for="van">Van</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="minibus" value="Minibus" onchange="filterCars()">
+                    <label for="minibus">Minibus</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="prestige" value="Prestige" onchange="filterCars()">
+                    <label for="prestige">Prestige</label>
+                </div>
+            </div>
+
+            <!-- Car Body Type Filter -->
+            <div class="filter-section">
+                <h3>Car Body Type</h3>
+                <div class="filter-option">
+                    <input type="checkbox" id="convertible" value="Convertible" onchange="filterCars()">
+                    <label for="convertible">Convertible</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="exotic" value="Exotic Cars" onchange="filterCars()">
+                    <label for="exotic">Exotic Cars</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="hatchback" value="Hatchback" onchange="filterCars()">
+                    <label for="hatchback">Hatchback</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="minivan" value="Minivan" onchange="filterCars()">
+                    <label for="minivan">Minivan</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="truck" value="Truck" onchange="filterCars()">
+                    <label for="truck">Truck</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="sedan" value="Sedan" onchange="filterCars()">
+                    <label for="sedan">Sedan</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="sports" value="Sports Car" onchange="filterCars()">
+                    <label for="sports">Sports Car</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="wagon" value="Station Wagon" onchange="filterCars()">
+                    <label for="wagon">Station Wagon</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="suv" value="SUV" onchange="filterCars()">
+                    <label for="suv">SUV</label>
+                </div>
+            </div>
+
+            <!-- Car Seats Filter -->
+            <div class="filter-section">
+                <h3>Car Seats</h3>
+                <div class="filter-option">
+                    <input type="checkbox" id="seats2" value="2" onchange="filterCars()">
+                    <label for="seats2">2 seats</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="seats3" value="3" onchange="filterCars()">
+                    <label for="seats3">3 seats</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="seats4" value="4" onchange="filterCars()">
+                    <label for="seats4">4 seats</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="seats5" value="5" onchange="filterCars()">
+                    <label for="seats5">5 seats</label>
+                </div>
+            </div>
+
+            <!-- Engine Capacity Filter -->
+            <div class="filter-section">
+                <h3>Car Engine Capacity (cc)</h3>
+                <div class="filter-option">
+                    <input type="checkbox" id="cc1000" value="1000" onchange="filterCars()">
+                    <label for="cc1000">0 - 1000</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="cc2000" value="2000" onchange="filterCars()">
+                    <label for="cc2000">1000 - 2000</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="cc3000" value="3000" onchange="filterCars()">
+                    <label for="cc3000">2000 - 3000</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="cc4000" value="4000" onchange="filterCars()">
+                    <label for="cc4000">3000 - 4000</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="cc5000" value="5000" onchange="filterCars()">
+                    <label for="cc5000">4000+</label>
+                </div>
+            </div>
+
+            <!-- Price Range Filter -->
+            <div class="filter-section">
+                <h3>Price ($)</h3>
+                <div class="price-inputs">
+                    <input type="number" id="minPrice" placeholder="Min: 0" min="0" onchange="filterCars()">
+                    <input type="number" id="maxPrice" placeholder="Max: 5000" min="0" onchange="filterCars()">
+                </div>
+            </div>
+        </aside>
+
+        <!-- Cars Grid -->
+        <div class="cars-container" id="carsContainer">
+            <!-- Cars will be dynamically loaded here -->
+        </div>
+    </div>
+
+    <script>
+        // Sample car data
+        const carsData = [
+            { id: 1, name: "Jeep Renegade", type: "Car", bodyType: "SUV", seats: 5, price: 265, rating: 25, image: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=400", passengers: 5, doors: 4, transmission: "Manual" },
+            { id: 2, name: "Mini Cooper", type: "Car", bodyType: "Hatchback", seats: 4, price: 244, rating: 70, image: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=400", passengers: 4, doors: 2, transmission: "Automatic" },
+            { id: 3, name: "Ferrari Enzo", type: "Prestige", bodyType: "Exotic Cars", seats: 2, price: 385, rating: 58, image: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=400", passengers: 2, doors: 2, transmission: "Automatic" },
+            { id: 4, name: "Ford Raptor", type: "Car", bodyType: "Truck", seats: 5, price: 147, rating: 16, image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=400", passengers: 5, doors: 4, transmission: "Manual" },
+            { id: 5, name: "Mini Cooper", type: "Car", bodyType: "Hatchback", seats: 4, price: 238, rating: 43, image: "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=400", passengers: 4, doors: 2, transmission: "Automatic" },
+            { id: 6, name: "VW Polo", type: "Car", bodyType: "Hatchback", seats: 5, price: 106, rating: 30, image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=400", passengers: 5, doors: 4, transmission: "Manual" },
+            { id: 7, name: "Chevrolet Camaro", type: "Car", bodyType: "Sports Car", seats: 4, price: 245, rating: 32, image: "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=400", passengers: 4, doors: 2, transmission: "Automatic" },
+            { id: 8, name: "Hyundai Staria", type: "Van", bodyType: "Minivan", seats: 5, price: 191, rating: 23, image: "https://images.unsplash.com/photo-1527786356703-4b100091cd2c?w=400", passengers: 7, doors: 4, transmission: "Automatic" },
+            { id: 9, name: "Toyota Rav 4", type: "Car", bodyType: "SUV", seats: 5, price: 114, rating: 82, image: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=400", passengers: 5, doors: 4, transmission: "Automatic" },
+            { id: 10, name: "Bentley", type: "Prestige", bodyType: "Sedan", seats: 5, price: 299, rating: 45, image: "https://images.unsplash.com/photo-1563720360172-67b8f3dce741?w=400", passengers: 5, doors: 4, transmission: "Automatic" },
+            { id: 11, name: "Lexus", type: "Prestige", bodyType: "Sedan", seats: 5, price: 131, rating: 61, image: "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=400", passengers: 5, doors: 4, transmission: "Automatic" },
+            { id: 12, name: "Range Rover", type: "Prestige", bodyType: "SUV", seats: 5, price: 228, rating: 82, image: "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=400", passengers: 5, doors: 4, transmission: "Automatic" }
+        ];
+
+        // Display all cars initially
+        displayCars(carsData);
+
+        function displayCars(cars) {
+            const container = document.getElementById('carsContainer');
+            
+            if (cars.length === 0) {
+                container.innerHTML = '<div class="no-results">No cars found matching your criteria</div>';
+                return;
+            }
+
+            container.innerHTML = cars.map(car => `
+                <div class="car-card">
+                    <img src="${car.image}" alt="${car.name}" class="car-image">
+                    <div class="car-details">
+                        <div class="car-header">
+                            <h3 class="car-name">${car.name}</h3>
+                            <div class="car-rating">⭐ ${car.rating}</div>
+                        </div>
+                        <div class="car-specs">
+                            <span class="spec-item">👥 ${car.passengers}</span>
+                            <span class="spec-item">🚪 ${car.doors}</span>
+                            <span class="spec-item">⚙️ ${car.transmission}</span>
+                        </div>
+                        <span class="badge">${car.bodyType}</span>
+                        <div class="car-footer" style="margin-top: 15px;">
+                            <div class="car-price">
+                                <span class="price-label">Starting from</span>
+                                <span class="price-amount">$${car.price}</span>
+                            </div>
+                            <button class="book-btn">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterCars() {
+            // Get selected filters
+            const selectedTypes = Array.from(document.querySelectorAll('#car, #van, #minibus, #prestige'))
+                .filter(cb => cb.checked)
+                .map(cb => cb.value);
+
+            const selectedBodyTypes = Array.from(document.querySelectorAll('#convertible, #exotic, #hatchback, #minivan, #truck, #sedan, #sports, #wagon, #suv'))
+                .filter(cb => cb.checked)
+                .map(cb => cb.value);
+
+            const selectedSeats = Array.from(document.querySelectorAll('#seats2, #seats3, #seats4, #seats5'))
+                .filter(cb => cb.checked)
+                .map(cb => parseInt(cb.value));
+
+            const minPrice = parseInt(document.getElementById('minPrice').value) || 0;
+            const maxPrice = parseInt(document.getElementById('maxPrice').value) || Infinity;
+
+            // Filter cars
+            let filteredCars = carsData;
+
+            if (selectedTypes.length > 0) {
+                filteredCars = filteredCars.filter(car => selectedTypes.includes(car.type));
+            }
+
+            if (selectedBodyTypes.length > 0) {
+                filteredCars = filteredCars.filter(car => selectedBodyTypes.includes(car.bodyType));
+            }
+
+            if (selectedSeats.length > 0) {
+                filteredCars = filteredCars.filter(car => selectedSeats.includes(car.seats));
+            }
+
+            filteredCars = filteredCars.filter(car => car.price >= minPrice && car.price <= maxPrice);
+
+            displayCars(filteredCars);
+        }
+    </script>
+    <div id="footer-container"></div>
+
+    <script>
+        // Load header
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-container').innerHTML = data;
+                const header = document.getElementById('header');
+                if (header) {
+                    window.addEventListener('scroll', () => {
+                        if (window.scrollY > 50) {
+                            header.classList.remove('transparent');
+                            header.classList.add('scrolled');
+                        } else {
+                            header.classList.remove('scrolled');
+                            header.classList.add('transparent');
+                        }
+                    });
+                }
+            })
+            .catch(error => console.error('Error loading header:', error));
+
+        // Load footer
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading footer:', error));
+
+        // Fleet carousel
+        function scrollFleet(direction) {
+            const container = document.getElementById('fleetContainer');
+            const scrollAmount = container.offsetWidth / 3;
+            container.scrollBy({
+                left: direction * scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+
+        // Tab functionality
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                tabBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rentaly Footer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+        }
+
+        /* Footer Styles */
+        footer {
+            background: #1a1a1a;
+            color: #ffffff;
+            padding: 80px 0 0 0;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 50px;
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .widget h5 {
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .widget p {
+            color: #cccccc;
+            line-height: 1.8;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        /* Contact Info */
+        address.s1 {
+            font-style: normal;
+            color: #cccccc;
+        }
+
+        address.s1 span {
+            display: block;
+            margin-bottom: 15px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        address.s1 i {
+            color: #1fa2d1;
+            margin-right: 12px;
+            width: 20px;
+            display: inline-block;
+        }
+
+        address.s1 a {
+            color: #cccccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        address.s1 a:hover {
+            color: #1fa2d1;
+        }
+
+        /* Quick Links */
+        .widget ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .widget ul li {
+            margin-bottom: 12px;
+        }
+
+        .widget ul li a {
+            color: #cccccc;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .widget ul li a:hover {
+            color: #1fa2d1;
+            padding-left: 5px;
+        }
+
+        /* Social Icons */
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            width: 45px;
+            height: 45px;
+            background: #2a2a2a;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 18px;
+        }
+
+        .social-icons a:hover {
+            background: #1fa2d1;
+            transform: translateY(-3px);
+        }
+
+        /* Subfooter */
+        .subfooter {
+            background: #000000;
+            padding: 25px 0;
+            border-top: 1px solid #2a2a2a;
+        }
+
+        .de-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .de-flex-col a {
+            color: #999999;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .de-flex-col a:hover {
+            color: #1fa2d1;
+        }
+
+        .menu-simple {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu-simple li a {
+            color: #999999;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .menu-simple li a:hover {
+            color: #1fa2d1;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .row {
+                grid-template-columns: 1fr;
+            }
+
+            .de-flex {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .menu-simple {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            footer {
+                padding: 50px 0 0 0;
+            }
+
+            .container {
+                padding: 0 20px;
+            }
+        }
+
+        /* Demo content above footer */
+        .demo-content {
+            padding: 100px 20px;
+            text-align: center;
+            background: #ffffff;
+        }
+
+        .demo-content h2 {
+            font-size: 36px;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+        }
+
+        .demo-content p {
+            font-size: 18px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Footer Begin -->
+    <footer class="text-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="widget">
+                        <h5>About Rentaly</h5>
+                        <p>Where quality meets affordability. We understand the importance of a smooth and enjoyable journey without the burden of excessive costs. That's why we have meticulously crafted our offerings to provide you with top-notch vehicles at minimum expense.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3">
+                    <div class="widget">
+                        <h5>Contact Info</h5>
+                        <address class="s1">
+                            <span><i class="fa fa-map-marker fa-lg"></i>08 W 36th St, New York, NY 10001</span>
+                            <span><i class="fa fa-phone fa-lg"></i>+1 333 9296</span>
+                            <span><i class="fa fa-envelope fa-lg"></i><a href="mailto:contact@example.com">contact@example.com</a></span>
+                            <span><i class="fa fa-file-pdf fa-lg"></i><a href="#">Download Brochure</a></span>
+                        </address>
+                    </div>
+                </div>
+
+                <div class="col-lg-3">
+                    <div class="widget">
+                        <h5>Quick Links</h5>
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Cars</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-3">
+                    <div class="widget">
+                        <h5>Social Network</h5>
+                        <div class="social-icons">
+                            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fa-brands fa-pinterest-p"></i></a>
+                            <a href="#"><i class="fa fa-rss"></i></a>
+                        </div>
+                    </div>    
+                </div>
+            </div>
+        </div>
+
+        <div class="subfooter">
+            <div class="container">
+                <div class="row" style="display: block;">
+                    <div class="col-md-12">
+                        <div class="de-flex">
+                            <div class="de-flex-col">
+                                <a href="index.html">
+                                    Copyright 2025 - reserved by Niyan IT Solutions
+                                </a>
+                            </div>
+                            <ul class="menu-simple">
+                                <li><a href="#">Terms &amp; Conditions</a></li>
+                                <li><a href="#">Privacy Policy</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Close -->
+</body>
+</html>

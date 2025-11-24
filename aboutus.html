@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Corporate Wheel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .hero-section {
+            position: relative;
+            height: 250px;
+            background-image: url("images/aboutbg.png");
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-section h1 {
+            color: white;
+            font-size: 4rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        /* Intro Section */
+        .intro-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 80px 40px;
+            background: #ffffff;
+        }
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .intro-text h2 {
+            font-size: 2.8rem;
+            color: #0a2540;
+            margin-bottom: 30px;
+            line-height: 1.3;
+        }
+
+        .intro-text .highlight {
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        .intro-description {
+            color: #64748b;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .intro-description p {
+            margin-bottom: 15px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .stat-card {
+            background: #f8fafc;
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            color: #2563eb;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: #475569;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        /* Journey Section */
+        .journey-section {
+            background: #f1f5f9;
+            padding: 80px 40px;
+        }
+
+        .journey-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .journey-content h3 {
+            font-size: 2.5rem;
+            color: #0a2540;
+            margin-bottom: 25px;
+        }
+
+        .journey-content p {
+            color: #64748b;
+            font-size: 1.1rem;
+            line-height: 1.9;
+        }
+
+        /* What We Offer Section */
+        .offer-section {
+            background: #ffffff;
+            padding: 80px 40px;
+        }
+
+        .offer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .offer-content h3 {
+            font-size: 2.5rem;
+            color: #0a2540;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .offer-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        .offer-card {
+            background: #f8fafc;
+            padding: 40px;
+            border-radius: 12px;
+            border-left: 4px solid #2563eb;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .offer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .offer-card h4 {
+            font-size: 1.5rem;
+            color: #0a2540;
+            margin-bottom: 15px;
+        }
+
+        .offer-card p {
+            color: #64748b;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* Commitment Section */
+        .commitment-section {
+            background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
+            padding: 80px 40px;
+            color: white;
+        }
+
+        .commitment-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .commitment-content h3 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: white;
+        }
+
+        .commitment-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .commitment-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .commitment-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .commitment-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .commitment-item p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+        }
+
+        /* Vision Mission Section */
+        .vision-mission-section {
+            background: #ffffff;
+            padding: 80px 40px;
+        }
+
+        .vision-mission-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .vision-box, .mission-box {
+            padding: 50px;
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .vision-box {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 2px solid #2563eb;
+        }
+
+        .mission-box {
+            background: linear-gradient(135deg, #fefce8 0%, #fef3c7 100%);
+            border: 2px solid #eab308;
+        }
+
+        .vision-box h3, .mission-box h3 {
+            font-size: 2rem;
+            color: #0a2540;
+            margin-bottom: 20px;
+        }
+
+        .vision-box p, .mission-box p {
+            color: #475569;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            padding: 100px 40px;
+            text-align: center;
+            color: white;
+        }
+
+        .cta-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .cta-content h3 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .cta-content p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 18px 45px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #0f172a;
+        }
+
+        @media (max-width: 968px) {
+            .intro-grid,
+            .vision-mission-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .offer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .commitment-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-section h1 {
+                font-size: 3rem;
+            }
+
+            .intro-text h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .stats-grid,
+            .commitment-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+
+            .cta-content h3 {
+                font-size: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="header-container"></div>
+
+    <div class="hero-section">
+        <h1>About Us</h1>
+    </div>
+
+    <!-- Intro Section -->
+    <div class="intro-section">
+        <div class="intro-grid">
+            <div class="intro-text">
+                <h2>We offer customers a wide range of <span class="highlight">commercial cars</span> and <span class="highlight">luxury cars</span> for any occasion.</h2>
+            </div>
+            <div class="intro-description">
+                <p>Corporate Wheel is a growing corporate transportation partner, offering reliable car rental and cab services for companies. With 1–2 years of industry experience, we have quickly earned the trust of businesses by delivering safe, punctual, and professional mobility solutions.</p>
+                <p>At Corporate Wheel, we understand that seamless transportation is essential for any organization. Whether it's daily employee commute, client travel, or long-term corporate car rental, our mission is to make your business movement smooth, efficient, and stress-free.</p>
+            </div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">1500+</div>
+                <div class="stat-label">Completed Orders</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">Happy Customers</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">Vehicles Fleet</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">2</div>
+                <div class="stat-label">Years Experience</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Journey Section -->
+    <div class="journey-section">
+        <div class="journey-content">
+            <h3>Our Journey</h3>
+            <p>Founded with a vision to simplify corporate travel, Corporate Wheel has built a strong foundation in a short span by prioritizing customer satisfaction, service quality, and operational excellence. Today, we proudly serve various companies with customized travel plans and long-term rental options.</p>
+        </div>
+    </div>
+
+    <!-- What We Offer Section -->
+    <div class="offer-section">
+        <div class="offer-content">
+            <h3>What We Offer</h3>
+            <div class="offer-grid">
+                <div class="offer-card">
+                    <h4>Corporate Cab Services</h4>
+                    <p>Daily office commute, client drop/pickup, and on-demand cab bookings.</p>
+                </div>
+                <div class="offer-card">
+                    <h4>Long-Term Car Rentals</h4>
+                    <p>Monthly, yearly, or custom rental plans for organizations.</p>
+                </div>
+                <div class="offer-card">
+                    <h4>Dedicated Corporate Travel Support</h4>
+                    <p>Special team to handle bookings, scheduling, and fleet management.</p>
+                </div>
+                <div class="offer-card">
+                    <h4>Safe & Comfortable Cars</h4>
+                    <p>Well-maintained vehicles with trained chauffeurs.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Commitment Section -->
+    <div class="commitment-section">
+        <div class="commitment-content">
+            <h3>Our Commitment</h3>
+            <div class="commitment-grid">
+                <div class="commitment-item">
+                    <div class="commitment-icon">⏰</div>
+                    <h4>On-time Service</h4>
+                    <p>Every time</p>
+                </div>
+                <div class="commitment-item">
+                    <div class="commitment-icon">🚗</div>
+                    <h4>Clean & Safe Vehicles</h4>
+                    <p>Fully maintained</p>
+                </div>
+                <div class="commitment-item">
+                    <div class="commitment-icon">👨‍✈️</div>
+                    <h4>Professional Drivers</h4>
+                    <p>Trained experts</p>
+                </div>
+                <div class="commitment-item">
+                    <div class="commitment-icon">💰</div>
+                    <h4>Transparent Pricing</h4>
+                    <p>No hidden charges</p>
+                </div>
+                <div class="commitment-item">
+                    <div class="commitment-icon">📞</div>
+                    <h4>24×7 Support</h4>
+                    <p>Always available</p>
+                </div>
+                <div class="commitment-item">
+                    <div class="commitment-icon">✨</div>
+                    <h4>Quality Service</h4>
+                    <p>Customer satisfaction</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vision & Mission Section -->
+    <div class="vision-mission-section">
+        <div class="vision-mission-content">
+            <div class="vision-box">
+                <h3>Our Vision</h3>
+                <p>To become a trusted corporate mobility partner by offering smooth, reliable, and affordable transportation solutions that support business growth and employee comfort.</p>
+            </div>
+            <div class="mission-box">
+                <h3>Our Mission</h3>
+                <p>To redefine corporate travel by combining technology, service excellence, and customer-first values, ensuring every journey is safe, efficient, and hassle-free.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="cta-section">
+        <div class="cta-content">
+            <h3>Ready to Transform Your Corporate Travel?</h3>
+            <p>Join hundreds of companies who trust Corporate Wheel for their transportation needs. Let's make your business mobility seamless, reliable, and hassle-free.</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-primary">Get Started Today</a>
+                <a href="#" class="btn btn-secondary">Contact Us</a>
+            </div>
+        </div>
+    </div>
+    <div id="footer-container"></div>
+
+    <script>
+        // Load header
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-container').innerHTML = data;
+                const header = document.getElementById('header');
+                if (header) {
+                    window.addEventListener('scroll', () => {
+                        if (window.scrollY > 50) {
+                            header.classList.remove('transparent');
+                            header.classList.add('scrolled');
+                        } else {
+                            header.classList.remove('scrolled');
+                            header.classList.add('transparent');
+                        }
+                    });
+                }
+            })
+            .catch(error => console.error('Error loading header:', error));
+
+        // Load footer
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading footer:', error));
+
+        // Fleet carousel
+        function scrollFleet(direction) {
+            const container = document.getElementById('fleetContainer');
+            const scrollAmount = container.offsetWidth / 3;
+            container.scrollBy({
+                left: direction * scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+
+        // Tab functionality
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                tabBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
