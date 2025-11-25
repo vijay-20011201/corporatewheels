@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Rental Contact Form</title>
+
+    <!-- EMAILJS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>
+        (function () {
+            emailjs.init("YOUR_PUBLIC_KEY"); /* Replace */
+        })();
+    </script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* hide button since auto-open */
+        .open-form-btn { display: none; }
+
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+        }
+
+        .popup-overlay.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+        @keyframes slideUp {
+            from { opacity:0; transform:translateY(30px); }
+            to { opacity:1; transform:translateY(0); }
+        }
+
+        .form-container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideUp 0.4s ease;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px; right: 20px;
+            background: #f0f0f0;
+            border: none;
+            width: 35px; height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            color: #333;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .close-btn:hover { background:#e0e0e0; transform:rotate(90deg); }
+
+        .form-group{ margin-bottom:20px; }
+        .form-row{ display:grid; grid-template-columns:1fr 1fr; gap:15px; }
+
+        h2{ color:#333; margin-bottom:10px; font-size:28px; }
+        .subtitle{ color:#666; margin-bottom:30px; }
+
+        label{ display:block; margin-bottom:8px; font-weight:500; }
+
+        input,select,textarea{
+            width:100%;
+            padding:12px 15px;
+            border:2px solid #e0e0e0;
+            border-radius:10px;
+            font-size:14px;
+            transition:0.3s;
+        }
+
+        input:focus,select:focus,textarea:focus{
+            border-color:#667eea;
+            box-shadow:0 0 0 3px rgba(102,126,234,0.1);
+        }
+
+        textarea{ min-height:100px; resize:vertical; }
+
+        .submit-btn{
+            width:100%; padding:15px;
+            background:linear-gradient(135deg,#667eea,#764ba2);
+            border:none; border-radius:10px;
+            color:white; cursor:pointer;
+            font-size:16px; font-weight:600;
+        }
+
+        .success-message{
+            display:none;
+            background:#4caf50;
+            color:white;
+            padding:15px;
+            border-radius:10px;
+            margin-bottom:20px;
+            text-align:center;
+            font-weight:bold;
+        }
+        .success-message.show { display:block; }
+
+        @media(max-width:600px){
+            .form-container { padding:30px 20px; }
+            .form-row { grid-template-columns:1fr; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <button class="open-form-btn" onclick="openForm()">Book Your Ride</button>
+
+    <!-- POPUP -->
+    <div class="popup-overlay" id="popupOverlay" onclick="closeFormOnOverlay(event)">
+        <div class="form-container" onclick="event.stopPropagation()">
+
+            <button class="close-btn" onclick="closeForm()">✕</button>
+
+            <h2>Car Rental Booking</h2>
+            <p class="subtitle">Fill out the form below and we'll contact you shortly.</p>
+
+            <div class="success-message" id="successMessage">
+                ✓ Your booking request has been sent successfully!
+            </div>
+
+            <form id="contactForm">
+
+                <div class="form-group">
+                    <label>Name *</label>
+                    <input type="text" name="name" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Contact *</label>
+                        <input type="tel" name="contact" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="email" name="email" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Pickup Location *</label>
+                    <input type="text" name="pickup_location" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Drop Location *</label>
+                    <input type="text" name="drop_location" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Pickup Date *</label>
+                        <input type="date" id="pickup_date" name="pickup_date" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Drop Date *</label>
+                        <input type="date" id="drop_date" name="drop_date" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Car Type *</label>
+                        <select name="car_type" required>
+                            <option value="">Select Car Type</option>
+                            <option value="SUV">SUV</option>
+                            <option value="Sedan">Sedan</option>
+                            <option value="Sports">Sports</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Seats *</label>
+                        <select name="seats" required>
+                            <option value="">Select Seats</option>
+                            <option value="4">4 Seats</option>
+                            <option value="5">5 Seats</option>
+                            <option value="7">7 Seats</option>
+                            <option value="8">8 Seats</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea name="message" placeholder="Write a message"></textarea>
+                </div>
+
+                <button class="submit-btn" type="submit">Submit Booking</button>
+            </form>
+
+        </div>
+    </div>
+
+<script>
+
+    function openForm() {
+        document.getElementById("popupOverlay").classList.add("active");
+    }
+
+    function closeForm() {
+        document.getElementById("popupOverlay").classList.remove("active");
+    }
+
+    function closeFormOnOverlay(e){
+        if(e.target.id === "popupOverlay") closeForm();
+    }
+
+    // AUTO-OPEN WHEN PAGE LOADS
+    window.onload = openForm;   /* <-- ADDED */
+
+    // DATE RESTRICT
+    const today = new Date().toISOString().split("T")[0];
+    document.getElementById("pickup_date").min = today;
+    document.getElementById("drop_date").min = today;
+    pickup_date.addEventListener("change",()=> drop_date.min = pickup_date.value);
+
+    // EMAIL JS
+    document.getElementById("contactForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        emailjs.sendForm("YOUR_SERVICE_ID","YOUR_TEMPLATE_ID",this)
+        .then(() => {
+            successMessage.classList.add("show");
+            setTimeout(() => {
+                successMessage.classList.remove("show");
+                contactForm.reset();
+                closeForm();
+            }, 2500);
+        })
+        .catch(err => alert("Failed: " + JSON.stringify(err)));
+    });
+
+    document.addEventListener("keydown", e=>{
+        if(e.key==="Escape") closeForm();
+    });
+
+    function closeForm() {
+    window.location.href = "index.html"; // Redirect to homepage
+}
+
+</script>
+
+</body>
+</html>

@@ -378,7 +378,7 @@
 
             <!-- Price Range Filter -->
             <div class="filter-section">
-                <h3>Price ($)</h3>
+                <h3>Price (₹)</h3>
                 <div class="price-inputs">
                     <input type="number" id="minPrice" placeholder="Min: 0" min="0" onchange="filterCars()">
                     <input type="number" id="maxPrice" placeholder="Max: 5000" min="0" onchange="filterCars()">
@@ -395,18 +395,18 @@
     <script>
         // Sample car data
         const carsData = [
-            { id: 1, name: "Jeep Renegade", type: "Car", bodyType: "SUV", seats: 5, price: 265, rating: 25, image: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=400", passengers: 5, doors: 4, transmission: "Manual" },
-            { id: 2, name: "Mini Cooper", type: "Car", bodyType: "Hatchback", seats: 4, price: 244, rating: 70, image: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=400", passengers: 4, doors: 2, transmission: "Automatic" },
-            { id: 3, name: "Ferrari Enzo", type: "Prestige", bodyType: "Exotic Cars", seats: 2, price: 385, rating: 58, image: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=400", passengers: 2, doors: 2, transmission: "Automatic" },
-            { id: 4, name: "Ford Raptor", type: "Car", bodyType: "Truck", seats: 5, price: 147, rating: 16, image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=400", passengers: 5, doors: 4, transmission: "Manual" },
-            { id: 5, name: "Mini Cooper", type: "Car", bodyType: "Hatchback", seats: 4, price: 238, rating: 43, image: "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=400", passengers: 4, doors: 2, transmission: "Automatic" },
-            { id: 6, name: "VW Polo", type: "Car", bodyType: "Hatchback", seats: 5, price: 106, rating: 30, image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=400", passengers: 5, doors: 4, transmission: "Manual" },
-            { id: 7, name: "Chevrolet Camaro", type: "Car", bodyType: "Sports Car", seats: 4, price: 245, rating: 32, image: "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=400", passengers: 4, doors: 2, transmission: "Automatic" },
-            { id: 8, name: "Hyundai Staria", type: "Van", bodyType: "Minivan", seats: 5, price: 191, rating: 23, image: "https://images.unsplash.com/photo-1527786356703-4b100091cd2c?w=400", passengers: 7, doors: 4, transmission: "Automatic" },
-            { id: 9, name: "Toyota Rav 4", type: "Car", bodyType: "SUV", seats: 5, price: 114, rating: 82, image: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=400", passengers: 5, doors: 4, transmission: "Automatic" },
-            { id: 10, name: "Bentley", type: "Prestige", bodyType: "Sedan", seats: 5, price: 299, rating: 45, image: "https://images.unsplash.com/photo-1563720360172-67b8f3dce741?w=400", passengers: 5, doors: 4, transmission: "Automatic" },
-            { id: 11, name: "Lexus", type: "Prestige", bodyType: "Sedan", seats: 5, price: 131, rating: 61, image: "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=400", passengers: 5, doors: 4, transmission: "Automatic" },
-            { id: 12, name: "Range Rover", type: "Prestige", bodyType: "SUV", seats: 5, price: 228, rating: 82, image: "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=400", passengers: 5, doors: 4, transmission: "Automatic" }
+            { id: 1, name: "Jeep Renegade", type: "Car", bodyType: "SUV", seats: 5, price: 2600, rating: 25, image: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=400", passengers: 5, doors: 4, transmission: "Manual" },
+            { id: 2, name: "Mini Cooper", type: "Car", bodyType: "Hatchback", seats: 4, price: 2440, rating: 70, image: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=400", passengers: 4, doors: 2, transmission: "Automatic" },
+            { id: 3, name: "Ferrari Enzo", type: "Prestige", bodyType: "Exotic Cars", seats: 2, price: 3085, rating: 58, image: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=400", passengers: 2, doors: 2, transmission: "Automatic" },
+            { id: 4, name: "Ford Raptor", type: "Car", bodyType: "Truck", seats: 5, price: 2247, rating: 16, image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=400", passengers: 5, doors: 4, transmission: "Manual" },
+            { id: 5, name: "Mini Cooper", type: "Car", bodyType: "Hatchback", seats: 4, price: 2380, rating: 43, image: "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=400", passengers: 4, doors: 2, transmission: "Automatic" },
+            { id: 6, name: "VW Polo", type: "Car", bodyType: "Hatchback", seats: 5, price: 1068, rating: 30, image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=400", passengers: 5, doors: 4, transmission: "Manual" },
+            { id: 7, name: "Chevrolet Camaro", type: "Car", bodyType: "Sports Car", seats: 4, price: 2450, rating: 32, image: "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=400", passengers: 4, doors: 2, transmission: "Automatic" },
+            { id: 8, name: "Hyundai Staria", type: "Van", bodyType: "Minivan", seats: 5, price: 2200, rating: 23, image: "https://images.unsplash.com/photo-1527786356703-4b100091cd2c?w=400", passengers: 7, doors: 4, transmission: "Automatic" },
+            { id: 9, name: "Toyota Rav 4", type: "Car", bodyType: "SUV", seats: 5, price: 2814, rating: 82, image: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=400", passengers: 5, doors: 4, transmission: "Automatic" },
+            { id: 10, name: "Bentley", type: "Prestige", bodyType: "Sedan", seats: 5, price: 3025, rating: 45, image: "https://images.unsplash.com/photo-1563720360172-67b8f3dce741?w=400", passengers: 5, doors: 4, transmission: "Automatic" },
+            { id: 11, name: "Lexus", type: "Prestige", bodyType: "Sedan", seats: 5, price: 2000, rating: 61, image: "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=400", passengers: 5, doors: 4, transmission: "Automatic" },
+            { id: 12, name: "Range Rover", type: "Prestige", bodyType: "SUV", seats: 5, price: 2280, rating: 82, image: "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=400", passengers: 5, doors: 4, transmission: "Automatic" }
         ];
 
         // Display all cars initially
@@ -437,9 +437,11 @@
                         <div class="car-footer" style="margin-top: 15px;">
                             <div class="car-price">
                                 <span class="price-label">Starting from</span>
-                                <span class="price-amount">$${car.price}</span>
+                                <span class="price-amount">₹${car.price}</span>
                             </div>
-                            <button class="book-btn">Book Now</button>
+                            <a href="contactform.html">
+    <button class="book-btn">Contact Us</button>
+</a>
                         </div>
                     </div>
                 </div>
