@@ -474,23 +474,14 @@
             */
         });
 
+    </script>
+    <script>
         // Load header
         fetch('header.html')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('header-container').innerHTML = data;
                 const header = document.getElementById('header');
-                if (header) {
-                    window.addEventListener('scroll', () => {
-                        if (window.scrollY > 50) {
-                            header.classList.remove('transparent');
-                            header.classList.add('scrolled');
-                        } else {
-                            header.classList.remove('scrolled');
-                            header.classList.add('transparent');
-                        }
-                    });
-                }
             })
             .catch(error => console.error('Error loading header:', error));
 
@@ -501,6 +492,25 @@
                 document.getElementById('footer-container').innerHTML = data;
             })
             .catch(error => console.error('Error loading footer:', error));
+
+        // Fleet carousel
+        function scrollFleet(direction) {
+            const container = document.getElementById('fleetContainer');
+            const scrollAmount = container.offsetWidth / 3;
+            container.scrollBy({
+                left: direction * scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+
+        // Tab functionality
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                tabBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
     </script>
 
 </body>
