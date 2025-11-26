@@ -327,7 +327,7 @@ body {
 }
 
 .find-vehicle-btn:hover {
-    background: #1b8fb9;
+    background: #1fa2d1;
     transform: translateY(-3px);
     box-shadow: 0 8px 25px rgba(31,162,209,0.4);
 }
@@ -395,7 +395,7 @@ body {
 
 .section-header h2 {
     font-size: 48px;
-    color: #1e3a5f;
+    color: #1fa2d1;
     margin-bottom: 20px;
     font-weight: 700;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -417,6 +417,41 @@ body {
     position: relative;
     overflow: hidden;
 }
+/* Fleet Section Header */
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+/* Fleet Title Styling */
+.section-header h2 {
+    font-size: 48px;
+    font-weight: 700;
+    color: #1fa2d1;
+    position: relative;
+    display: inline-block;
+}
+
+/* Blue underline animation */
+.section-header h2::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -12px;
+    width: 0;
+    height: 4px;
+    background-color: #1fa2d1;
+    transform: translateX(-50%);
+    animation: expandLine 1.5s ease-out forwards;
+    animation-delay: 0.5s;
+}
+
+/* Animation */
+@keyframes expandLine {
+    from { width: 0; }
+    to { width: 140px; }
+}
+
 
 .vehicle-fleet-section::before {
     content: '';
@@ -609,7 +644,7 @@ body {
 }
 
 .rent-btn:hover {
-    background: #1b8fb9;
+    background: #1fa2d1;
     transform: scale(1.05);
     box-shadow: 0 5px 20px rgba(31,162,209,0.4);
 }
@@ -641,11 +676,57 @@ body {
 
 /* ========== ABOUT SECTION ========== */
 .about-section {
-    padding: 100px 50px;
+    padding: 70px 50px;
     background: #2a2a2a;
     color: white;
     position: relative;
     overflow: hidden;
+}
+.about-title {
+    text-align: center;
+    font-size: 52px;
+    font-weight: 700;
+    margin-bottom: 50px;
+    color: #1fa2d1;
+    letter-spacing: 1px;
+    position: relative;   /* REQUIRED */
+    display: inline-block; /* Center underline width only text */
+}
+
+/* Blue underline */
+.about-title::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -12px;
+    width: 0;
+    height: 4px;
+    background-color: #1fa2d1;
+    transform: translateX(-50%);
+    animation: expandLine 1.5s ease-out forwards;
+    animation-delay: 0.5s;
+}
+
+/* Animation */
+@keyframes expandLine {
+    from {
+        width: 0;
+    }
+    to {
+        width: 120px;   /* Length of underline */
+    }
+}
+.about-image-box {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.about-image-box img {
+    width: 750px;        /* CONTROL WIDTH */
+    height: 520px;       /* CONTROL HEIGHT */
+    object-fit: cover;   /* crop nicely */
+    border-radius: 15px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
 }
 
 .about-section::after {
@@ -669,7 +750,7 @@ body {
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 80px;
+    gap: 40px;
     align-items: center;
     position: relative;
     z-index: 1;
@@ -718,6 +799,10 @@ body {
     width: 100%;
 }
 
+.about-content h2 .highlight {
+    background: none !important;
+}
+
 .about-content p {
     font-size: 18px;
     line-height: 1.8;
@@ -727,10 +812,11 @@ body {
 }
 
 .about-stats {
+    max-width: 1400px;
+    margin: 40px auto 0;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 30px;
-    animation: fadeInRight 1s ease-out;
 }
 
 @keyframes fadeInRight {
@@ -1143,7 +1229,7 @@ body {
 
 .journey-content h3 {
     font-size: 48px;
-    color: #1e3a5f;
+    color: #1fa2d1;
     margin-bottom: 30px;
     font-weight: 700;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -1197,6 +1283,28 @@ body {
     position: relative;
     overflow: hidden;
 }
+/* Underline for Offer Section Title */
+.offer-content h3 {
+    text-align: center;        /* CENTER TITLE */
+    margin-left: auto;        /* FORCE CENTER */
+    margin-right: auto;
+    display: block;           /* allow centering */
+}
+
+/* Blue underline animation */
+.offer-content h3::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -12px;
+    width: 0;
+    height: 4px;
+    background-color: #1fa2d1;
+    transform: translateX(-50%);
+    animation: expandLine 1.5s ease-out forwards;
+    animation-delay: 0.5s;
+}
+
 
 .offer-section::before {
     content: '';
@@ -1223,7 +1331,7 @@ body {
 
 .offer-content h3 {
     font-size: 48px;
-    color: #1e3a5f;
+    color: #1fa2d1;
     text-align: center;
     margin-bottom: 70px;
     font-weight: 700;
@@ -1343,7 +1451,7 @@ body {
 
 .offer-card h4 {
     font-size: 24px;
-    color: #1e3a5f;
+    color: #1fa2d1;
     margin-bottom: 15px;
     font-weight: 700;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -1398,7 +1506,7 @@ section {
             font-weight: 700;
             margin-bottom: 60px;
             text-align: center;
-            color: #1565c0;
+            color: #1fa2d1;
             position: relative;
             display: inline-block;
         }
@@ -1477,7 +1585,7 @@ section {
 
         .advantage-card h3 {
             font-size: 1.4rem;
-            color: #1565c0;
+            color: #1fa2d1;
             margin-bottom: 15px;
         }
 
@@ -1750,6 +1858,14 @@ section {
         min-width: 300px;
     }
 }
+@media(max-width: 768px){
+    .about-image-box img {
+        width: 100%;
+        height: auto;
+        max-width: 360px;
+    }
+}
+
 
 /* Mobile & Small Screens (320px - 767px) */
 @media (max-width: 767px) {
@@ -2062,6 +2178,22 @@ section {
         padding: 25px;
     }
 }
+@media (max-width: 900px) {
+    .about-container {
+        grid-template-columns: 1fr;
+    }
+
+    .about-stats {
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+@media (max-width: 500px) {
+    .about-stats {
+        grid-template-columns: 1fr;
+    }
+}
+
 </style>
     
 </head>
@@ -2251,32 +2383,67 @@ section {
     </section>
 
     <!-- ========== SECTION 2: About Us ========== -->
-    <section class="about-section">
-        <div class="about-container">
-            <div class="about-content">
-                <h2>We offer customers a wide range of <span class="highlight">commercial cars</span> and <span class="highlight">luxury cars</span> for any occasion.</h2>
-                <p>At our car rental agency, we believe that everyone deserves to experience the pleasure of driving a reliable and comfortable vehicle, regardless of their budget. We have curated a diverse fleet of well-maintained cars, ranging from sleek sedans to spacious SUVs, all at competitive prices. With our streamlined rental process, you can quickly and conveniently reserve your desired vehicle. Whether you need transportation for a business trip, family vacation, or simply want to enjoy a weekend getaway, we have flexible rental options to accommodate your schedule.</p>
-            </div>
-            <div class="about-stats">
-                <div class="stat-card">
-                    <div class="stat-number">19.2k</div>
-                    <div class="stat-label">Completed Orders</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">87.4k</div>
-                    <div class="stat-label">Happy Customers</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">28k</div>
-                    <div class="stat-label">Vehicles Fleet</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">2+</div>
-                    <div class="stat-label">Years Experience</div>
-                </div>
-            </div>
+<section class="about-section">
+
+    <!-- Center Title -->
+    <h2 class="about-title">About Us</h2>
+
+    <!-- Content + Image -->
+    <div class="about-container">
+        
+        <div class="about-content">
+            <h2>
+                We offer customers a wide range of 
+                <span class="highlight">commercial cars</span> and 
+                <span class="highlight">luxury cars</span> 
+                for any occasion.
+            </h2>
+
+            <p>
+                At our car rental agency, we believe that everyone deserves to experience the pleasure 
+                of driving a reliable and comfortable vehicle, regardless of their budget. We have curated 
+                a diverse fleet of well-maintained cars, ranging from sleek sedans to spacious SUVs, all at 
+                competitive prices. With our streamlined rental process, you can quickly and conveniently 
+                reserve your desired vehicle. Whether you need transportation for a business trip, family 
+                vacation, or simply want to enjoy a weekend getaway, we have flexible rental options to 
+                accommodate your schedule.
+            </p>
         </div>
-    </section>
+
+        <!-- Image -->
+        <div class="about-image-box">
+            <img src="images/aboutus.png" alt="About Corporate Wheel">
+        </div>
+
+    </div>
+
+    <!-- FULL WIDTH STATS -->
+    <div class="about-stats">
+
+        <div class="stat-card">
+            <div class="stat-number">19.2k</div>
+            <div class="stat-label">Completed Orders</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-number">87.4k</div>
+            <div class="stat-label">Happy Customers</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-number">28k</div>
+            <div class="stat-label">Vehicles Fleet</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-number">2+</div>
+            <div class="stat-label">Years Experience</div>
+        </div>
+
+    </div>
+
+</section>
+
 
     <!-- ========== SECTION 3: Our Features ========== -->
     <section class="features-section">
@@ -2391,7 +2558,7 @@ section {
     </section>
     <!-- Section 1: Advantages -->
     <section id="advantages">
-        <h1 class="section-title">OUR ADVANTAGES</h1>
+        <h1 class="section-title">Our Advantages</h1>
         <p style="font-size: 1.3rem; color: #555; margin-bottom: 50px; text-align: center;">Why Businesses Prefer Corporate Wheel</p>
         
         <div class="advantages-grid">
@@ -2435,7 +2602,7 @@ section {
 
     <!-- Section 2: Safety -->
     <section id="safety">
-        <h1 class="section-title">⭐ SAFETY & QUALITY COMMITMENT</h1>
+        <h1 class="section-title">⭐ Safety & Quality Commitment</h1>
         
         <div class="safety-intro">
             <h2>We Never Compromise on Safety</h2>
@@ -2477,7 +2644,7 @@ section {
 
     <!-- Section 3: Booking Steps -->
     <section id="booking">
-        <h1 class="section-title">⭐ FAST BOOKING IN 3 STEPS</h1>
+        <h1 class="section-title">⭐ Fast Booking In 3 Steps</h1>
         
         <div class="booking-intro">
             <h2>Book Your Corporate Ride in Minutes</h2>

@@ -106,7 +106,37 @@
             position: relative;
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            justify-self: center;
         }
+        .service-btn {
+    text-align: left; /* align heading + text properly */
+}
+
+/* Card Title */
+.service-btn h3 {
+    font-size: 1.2rem;
+    color: #0d47a1;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+/* Card Description */
+.service-btn p {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Hover text color */
+.service-btn:hover h3 {
+    color: #1565c0;
+}
+
+.service-btn:hover p {
+    color: #333;
+}
+
 
         .service-btn::before {
             content: '';
@@ -381,18 +411,60 @@
     </section>
 
     <!-- Service Navigation -->
-    <div class="service-nav">
-        <a href="#corporate" class="service-btn">Corporate Transport</a>
-        <a href="#industrial" class="service-btn">Industrial Transport</a>
-        <a href="#tours" class="service-btn">Tours & Holiday Packages</a>
-        <a href="#city-taxi" class="service-btn">City Taxi Service</a>
-        <a href="#airport" class="service-btn">Airport Transport</a>
-        <a href="#school" class="service-btn">School Transport</a>
-        <a href="#flight" class="service-btn">Flight Bookings</a>
-        <a href="#luxury" class="service-btn">Luxury Car Rentals</a>
-        <a href="#executive" class="service-btn">Executive Transport</a>
-        <a href="#ev" class="service-btn">EV Cab Service</a>
-    </div>
+<div class="service-nav">
+
+    <a href="#corporate" class="service-btn">
+        <h3>Corporate Transport</h3>
+        <p>Employee commute, office travel & business movement solutions.</p>
+    </a>
+
+    <a href="#industrial" class="service-btn">
+        <h3>Industrial Transport</h3>
+        <p>Workforce logistics for factories, plants & industrial locations.</p>
+    </a>
+
+    <a href="#tours" class="service-btn">
+        <h3>Tours & Holiday Packages</h3>
+        <p>Comfortable rides for vacations, tours & family trips.</p>
+    </a>
+
+    <a href="#city-taxi" class="service-btn">
+        <h3>City Taxi Service</h3>
+        <p>24/7 city travel with reliable drivers & clean vehicles.</p>
+    </a>
+
+    <a href="#airport" class="service-btn">
+        <h3>Airport Transport</h3>
+        <p>On-time pickups & drop services for domestic and international travel.</p>
+    </a>
+
+    <a href="#school" class="service-btn">
+        <h3>School Transport</h3>
+        <p>Safe, trusted transport for school students & staff.</p>
+    </a>
+
+    <a href="#flight" class="service-btn">
+        <h3>Flight Bookings</h3>
+        <p>Easy and affordable flight ticket booking assistance.</p>
+    </a>
+
+    <a href="#luxury" class="service-btn">
+        <h3>Luxury Car Rentals</h3>
+        <p>Premium cars for business events, weddings & executives.</p>
+    </a>
+
+    <a href="#executive" class="service-btn">
+        <h3>Executive Transport</h3>
+        <p>High-class travel experience for directors and VIP guests.</p>
+    </a>
+
+    <a href="#ev" class="service-btn">
+        <h3>EV Cab Service</h3>
+        <p>Eco-friendly electric cabs for sustainable travel.</p>
+    </a>
+
+</div>
+
 
     <!-- Service Sections -->
     <section id="corporate" class="service-section bg-white slide-left">
