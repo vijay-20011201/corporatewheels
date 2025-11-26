@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Corporate Wheel</title>
+    <link rel="Icon" href="images/cwlogo.png">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -20,6 +21,42 @@
             color: #333;
             background: #f8fafc;
         }
+        /* Floating WhatsApp Button */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 30px;
+    right: 30px;
+    background-color: #25D366;
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 32px;
+    line-height: 60px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    z-index: 9999;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    background-color: #20b358;
+}
+
+/* Mobile view adjustment */
+@media (max-width: 600px) {
+    .whatsapp-float {
+        width: 55px;
+        height: 55px;
+        font-size: 28px;
+        line-height: 55px;
+        right: 20px;
+        bottom: 20px;
+    }
+}
+
 
         /* Hero Section */
         .hero-section {
@@ -516,6 +553,11 @@
             });
         });
     </script>
+     <!-- WhatsApp Floating Button -->
+<a href="https://wa.me/919739097127?text=Hello%20Corporate%20Wheel%2C%20I%20need%20cab%20service" class="whatsapp-float" target="_blank">
+
+    <i class="fab fa-whatsapp"></i>
+</a>
 
 </body>
 </html>
