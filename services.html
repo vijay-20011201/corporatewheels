@@ -14,37 +14,10 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             overflow-x: hidden;
-            background: #0a0a0a;
-            color: #fff;
-            cursor: none;
+            background: #ffffff;
+            color: #333;
         }
 
-        /* Custom Cursor */
-        .cursor {
-            width: 20px;
-            height: 20px;
-            border: 2px solid #ffd700;
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            transition: all 0.1s ease;
-            transform: translate(-50%, -50%);
-        }
-
-        .cursor-follower {
-            width: 40px;
-            height: 40px;
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9998;
-            transition: all 0.3s ease;
-            transform: translate(-50%, -50%);
-        }
-
-        /* Smooth Scroll */
         html {
             scroll-behavior: smooth;
         }
@@ -52,7 +25,7 @@
         /* Hero Section */
         .hero {
             height: 100vh;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            background: linear-gradient(135deg, #1565c0 0%, #0d47a1 100%);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -66,9 +39,9 @@
         .hero::before {
             content: '';
             position: absolute;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(255,215,0,0.1) 0%, transparent 70%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
             animation: pulse 4s ease-in-out infinite;
         }
 
@@ -78,20 +51,23 @@
         }
 
         .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, #ffd700, #fff, #ffd700);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            color: #ffffff;
             animation: slideDown 1s ease;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
         }
 
         .hero p {
             font-size: 1.3rem;
-            max-width: 800px;
+            max-width: 900px;
             line-height: 1.8;
-            color: #ddd;
+            color: #e3f2fd;
             animation: slideUp 1s ease 0.3s both;
+            position: relative;
+            z-index: 1;
         }
 
         @keyframes slideDown {
@@ -104,31 +80,32 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Service Buttons Grid */
+        /* Service Navigation */
         .service-nav {
-            padding: 60px 20px;
-            background: #0f0f0f;
+            padding: 80px 20px;
+            background: #f5f5f5;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            gap: 25px;
             max-width: 1400px;
             margin: 0 auto;
         }
 
         .service-btn {
-            background: linear-gradient(135deg, #1e1e2e 0%, #2a2a3e 100%);
-            padding: 25px;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            padding: 30px;
             border-radius: 15px;
-            border: 2px solid transparent;
-            cursor: none;
+            border: 2px solid #e0e0e0;
+            cursor: pointer;
             transition: all 0.4s ease;
             text-align: center;
             text-decoration: none;
-            color: #fff;
+            color: #1565c0;
             font-weight: 600;
             font-size: 1.1rem;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
 
         .service-btn::before {
@@ -138,8 +115,8 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,215,0,0.2), transparent);
-            transition: left 0.5s ease;
+            background: linear-gradient(90deg, transparent, rgba(21,101,192,0.1), transparent);
+            transition: left 0.6s ease;
         }
 
         .service-btn:hover::before {
@@ -147,9 +124,10 @@
         }
 
         .service-btn:hover {
-            border-color: #ffd700;
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+            border-color: #1565c0;
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(21,101,192,0.2);
+            color: #0d47a1;
         }
 
         /* Service Sections */
@@ -160,140 +138,241 @@
             align-items: center;
             justify-content: center;
             opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease;
+            transition: all 1s ease;
         }
 
         .service-section.visible {
             opacity: 1;
-            transform: translateY(0);
         }
 
-        .service-section:nth-child(even) {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        .service-section.visible.slide-left .service-content-wrapper {
+            animation: slideInLeft 0.8s ease forwards;
         }
 
-        .service-section:nth-child(odd) {
-            background: linear-gradient(135deg, #16213e 0%, #0f3460 100%);
+        .service-section.visible.slide-right .service-content-wrapper {
+            animation: slideInRight 0.8s ease forwards;
         }
 
-        .service-content {
-            max-width: 1200px;
-            text-align: center;
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-80px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
-        .service-content h2 {
-            font-size: 3rem;
-            margin-bottom: 30px;
-            color: #ffd700;
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(80px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .service-section.bg-white {
+            background: #ffffff;
+        }
+
+        .service-section.bg-blue {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+        }
+
+        .service-content-wrapper {
+            max-width: 1300px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .service-content-wrapper.reverse {
+            direction: rtl;
+        }
+
+        .service-content-wrapper.reverse > * {
+            direction: ltr;
+        }
+
+        .service-image {
+            width: 100%;
+            height: 450px;
+            border-radius: 20px;
+            object-fit: cover;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+            transition: all 0.5s ease;
+        }
+
+        .service-section:hover .service-image {
+            transform: scale(1.05);
+            box-shadow: 0 20px 60px rgba(21,101,192,0.25);
+        }
+
+        .service-text h2 {
+            font-size: 2.8rem;
+            margin-bottom: 25px;
+            color: #1e3a5f;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .service-text h2 .highlight {
+            color: #1565c0;
             position: relative;
-            display: inline-block;
         }
 
-        .service-content h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(90deg, transparent, #ffd700, transparent);
-        }
-
-        .service-content p {
+        .service-text p {
             font-size: 1.2rem;
             line-height: 1.9;
-            color: #ddd;
-            margin-bottom: 30px;
+            color: #555;
+            font-weight: 400;
         }
 
         /* Why Choose Section */
         .why-choose {
-            background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%);
+            background: linear-gradient(135deg, #0d47a1 0%, #1565c0 100%);
+            padding: 100px 20px;
+            color: #fff;
+        }
+
+        .why-choose-content {
+            max-width: 1300px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .why-choose h2 {
+            font-size: 3rem;
+            margin-bottom: 50px;
+            color: #ffffff;
+            font-weight: 700;
         }
 
         .why-choose ul {
             list-style: none;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
             margin-top: 40px;
         }
 
         .why-choose li {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 20px;
-            border-radius: 10px;
-            border-left: 4px solid #ffd700;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid #ffffff;
+            font-size: 1.2rem;
+            transition: all 0.4s ease;
+            text-align: left;
+            backdrop-filter: blur(10px);
         }
 
         .why-choose li:hover {
-            background: rgba(255, 215, 0, 0.1);
-            transform: translateX(10px);
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(10px) scale(1.02);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
         /* CTA Section */
         .cta-section {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            background: #ffffff;
             text-align: center;
+            padding: 100px 20px;
+        }
+
+        .cta-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            font-size: 3rem;
+            color: #1e3a5f;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .cta-content p {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 40px;
+            line-height: 1.8;
         }
 
         .cta-buttons {
             display: flex;
-            gap: 20px;
+            gap: 25px;
             justify-content: center;
             flex-wrap: wrap;
-            margin-top: 40px;
         }
 
         .cta-btn {
-            padding: 18px 40px;
+            padding: 18px 45px;
             font-size: 1.2rem;
             border: none;
             border-radius: 50px;
-            cursor: none;
-            transition: all 0.3s ease;
+            cursor: pointer;
+            transition: all 0.4s ease;
             text-decoration: none;
             font-weight: 600;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
-            color: #000;
+            background: linear-gradient(135deg, #1565c0 0%, #0d47a1 100%);
+            color: #ffffff;
+            box-shadow: 0 8px 25px rgba(21,101,192,0.3);
         }
 
         .btn-primary:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.5);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(21,101,192,0.4);
         }
 
         .btn-secondary {
             background: transparent;
-            color: #ffd700;
-            border: 2px solid #ffd700;
+            color: #1565c0;
+            border: 3px solid #1565c0;
         }
 
         .btn-secondary:hover {
-            background: #ffd700;
-            color: #000;
-            transform: scale(1.05);
+            background: #1565c0;
+            color: #ffffff;
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(21,101,192,0.3);
         }
 
-        @media (max-width: 768px) {
+        /* Responsive */
+        @media (max-width: 968px) {
             .hero h1 { font-size: 2.5rem; }
-            .hero p { font-size: 1rem; }
-            .service-content h2 { font-size: 2rem; }
-            .service-content p { font-size: 1rem; }
+            .hero p { font-size: 1.1rem; }
+            
+            .service-content-wrapper {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .service-content-wrapper.reverse {
+                direction: ltr;
+            }
+            
+            .service-text h2 { font-size: 2.2rem; }
+            .service-text p { font-size: 1.1rem; }
+            
+            .service-image { height: 350px; }
+            
+            .why-choose h2,
+            .cta-content h2 { font-size: 2.2rem; }
+            
+            .service-nav {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 { font-size: 2rem; }
+            .service-text h2 { font-size: 1.8rem; }
+            .service-image { height: 280px; }
+            .cta-buttons { flex-direction: column; }
+            .cta-btn { width: 100%; max-width: 300px; }
         }
     </style>
 </head>
 <body>
     <div id="header-container"></div>
-    <div class="cursor"></div>
-    <div class="cursor-follower"></div>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -301,14 +380,14 @@
         <p>From daily corporate commutes to luxury airport transfers, Corporate Wheels delivers seamless, reliable, and tailored transport services that match your lifestyle and business needs.</p>
     </section>
 
-    <!-- Service Navigation Buttons -->
+    <!-- Service Navigation -->
     <div class="service-nav">
         <a href="#corporate" class="service-btn">Corporate Transport</a>
         <a href="#industrial" class="service-btn">Industrial Transport</a>
-        <a href="#tours" class="service-btn">Tours & Holidays packages</a>
+        <a href="#tours" class="service-btn">Tours & Holiday Packages</a>
         <a href="#city-taxi" class="service-btn">City Taxi Service</a>
         <a href="#airport" class="service-btn">Airport Transport</a>
-        <a href="#school" class="service-btn">School transport</a>
+        <a href="#school" class="service-btn">School Transport</a>
         <a href="#flight" class="service-btn">Flight Bookings</a>
         <a href="#luxury" class="service-btn">Luxury Car Rentals</a>
         <a href="#executive" class="service-btn">Executive Transport</a>
@@ -316,78 +395,109 @@
     </div>
 
     <!-- Service Sections -->
-    <section id="corporate" class="service-section">
-        <div class="service-content">
-            <h2>Reliable Transport for Modern Businesses</h2>
-            <p>Ensure your employees travel safely and on time with our corporate shuttle services. Designed for productivity and comfort, our fleet supports daily office commutes, client travel, and VIP movements with professional drivers and punctual operations.</p>
+    <section id="corporate" class="service-section bg-white slide-left">
+        <div class="service-content-wrapper">
+            <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40e?w=700&h=500&fit=crop" alt="Corporate Transport" class="service-image">
+            <div class="service-text">
+                <h2>Reliable <span class="highlight">Transport</span> for Modern Businesses</h2>
+                <p>Ensure your employees travel safely and on time with our <span class="highlight">corporate shuttle services</span>. Designed for productivity and comfort, our fleet supports daily office commutes, client travel, and VIP movements with professional drivers and punctual operations.</p>
+            </div>
         </div>
     </section>
 
-    <section id="industrial" class="service-section">
-        <div class="service-content">
-            <h2>Large-Scale Staff Transportation</h2>
-            <p>Move your workforce efficiently with our industrial transport fleet. Whether you manage a factory, plant, or construction site, we offer high-capacity vehicles, optimized routing, and hassle-free schedules to keep operations running smoothly.</p>
+    <section id="industrial" class="service-section bg-blue slide-right">
+        <div class="service-content-wrapper reverse">
+            <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=700&h=500&fit=crop" alt="Industrial Transport" class="service-image">
+            <div class="service-text">
+                <h2>Large-Scale <span class="highlight">Staff Transportation</span></h2>
+                <p>Move your workforce efficiently with our <span class="highlight">industrial transport fleet</span>. Whether you manage a factory, plant, or construction site, we offer high-capacity vehicles, optimized routing, and hassle-free schedules to keep operations running smoothly.</p>
+            </div>
         </div>
     </section>
 
-    <section id="tours" class="service-section">
-        <div class="service-content">
-            <h2>Discover Destinations with Comfort & Style</h2>
-            <p>Enjoy tailored tour packages that cover city sightseeing, weekend getaways, adventure trips, and family vacations. Our experienced chauffeurs and premium vehicles ensure your journey is as memorable as your destination.</p>
+    <section id="tours" class="service-section bg-white slide-left">
+        <div class="service-content-wrapper">
+            <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=700&h=500&fit=crop" alt="Tours & Holidays" class="service-image">
+            <div class="service-text">
+                <h2>Discover <span class="highlight">Destinations</span> with Comfort & Style</h2>
+                <p>Enjoy tailored <span class="highlight">tour packages</span> that cover city sightseeing, weekend getaways, adventure trips, and family vacations. Our experienced chauffeurs and premium vehicles ensure your journey is as memorable as your destination.</p>
+            </div>
         </div>
     </section>
 
-    <section id="city-taxi" class="service-section">
-        <div class="service-content">
-            <h2>Your Everyday Ride – Fast, Affordable, Convenient</h2>
-            <p>Whether it's a quick shopping trip, office commute, or cross-city travel, our city taxi service provides instant, reliable rides around the clock. Book instantly and enjoy clean cars, polite drivers, and transparent pricing.</p>
+    <section id="city-taxi" class="service-section bg-blue slide-right">
+        <div class="service-content-wrapper reverse">
+            <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40e?w=700&h=500&fit=crop" alt="City Taxi" class="service-image">
+            <div class="service-text">
+                <h2>Your Everyday Ride – <span class="highlight">Fast, Affordable, Convenient</span></h2>
+                <p>Whether it's a quick shopping trip, office commute, or cross-city travel, our <span class="highlight">city taxi service</span> provides instant, reliable rides around the clock. Book instantly and enjoy clean cars, polite drivers, and transparent pricing.</p>
+            </div>
         </div>
     </section>
 
-    <section id="airport" class="service-section">
-        <div class="service-content">
-            <h2>Punctual Airport Pick-Ups & Drop-Offs</h2>
-            <p>Never miss a flight again. Our airport transport service ensures timely arrivals and smooth departures with real-time flight monitoring, luggage assistance, and professional chauffeurs who value your time.</p>
+    <section id="airport" class="service-section bg-white slide-left">
+        <div class="service-content-wrapper">
+            <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=700&h=500&fit=crop" alt="Airport Transport" class="service-image">
+            <div class="service-text">
+                <h2>Punctual <span class="highlight">Airport Pick-Ups</span> & Drop-Offs</h2>
+                <p>Never miss a flight again. Our <span class="highlight">airport transport service</span> ensures timely arrivals and smooth departures with real-time flight monitoring, luggage assistance, and professional chauffeurs who value your time.</p>
+            </div>
         </div>
     </section>
 
-    <section id="school" class="service-section">
-        <div class="service-content">
-            <h2>Safe Rides for Students, Peace of Mind for Parents</h2>
-            <p>Our verified drivers and GPS-enabled vehicles ensure a secure and comfortable daily commute for children and college students. Safety, discipline, and punctuality are at the heart of our student transport service.</p>
+    <section id="school" class="service-section bg-blue slide-right">
+        <div class="service-content-wrapper reverse">
+            <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=700&h=500&fit=crop" alt="School Transport" class="service-image">
+            <div class="service-text">
+                <h2>Safe Rides for <span class="highlight">Students</span>, Peace of Mind for Parents</h2>
+                <p>Our verified drivers and GPS-enabled vehicles ensure a <span class="highlight">secure and comfortable</span> daily commute for children and college students. Safety, discipline, and punctuality are at the heart of our student transport service.</p>
+            </div>
         </div>
     </section>
 
-    <section id="flight" class="service-section">
-        <div class="service-content">
-            <h2>Hassle-Free Air Travel Planning</h2>
-            <p>Book domestic or international flights with our dedicated travel assistance team. From finding the best fares to securing last-minute bookings, we simplify your travel experience from start to finish.</p>
+    <section id="flight" class="service-section bg-white slide-left">
+        <div class="service-content-wrapper">
+            <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=700&h=500&fit=crop" alt="Flight Bookings" class="service-image">
+            <div class="service-text">
+                <h2>Hassle-Free <span class="highlight">Air Travel Planning</span></h2>
+                <p>Book domestic or international flights with our dedicated <span class="highlight">travel assistance team</span>. From finding the best fares to securing last-minute bookings, we simplify your travel experience from start to finish.</p>
+            </div>
         </div>
     </section>
 
-    <section id="luxury" class="service-section">
-        <div class="service-content">
-            <h2>Premium Cars for Premium Experiences</h2>
-            <p>Choose from a range of high-end luxury cars for weddings, corporate events, VIP travel, or special celebrations. Enjoy unmatched comfort, elegant interiors, and a premium chauffeur experience.</p>
+    <section id="luxury" class="service-section bg-blue slide-right">
+        <div class="service-content-wrapper reverse">
+            <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=700&h=500&fit=crop" alt="Luxury Cars" class="service-image">
+            <div class="service-text">
+                <h2>Premium Cars for <span class="highlight">Premium Experiences</span></h2>
+                <p>Choose from a range of high-end <span class="highlight">luxury cars</span> for weddings, corporate events, VIP travel, or special celebrations. Enjoy unmatched comfort, elegant interiors, and a premium chauffeur experience.</p>
+            </div>
         </div>
     </section>
 
-    <section id="executive" class="service-section">
-        <div class="service-content">
-            <h2>Professional Travel for Business Leaders</h2>
-            <p>Designed for CEOs, directors, and corporate guests, our executive transport service offers fully-equipped vehicles, trained chauffeurs, and a punctual, discreet experience that supports your business image.</p>
+    <section id="executive" class="service-section bg-white slide-left">
+        <div class="service-content-wrapper">
+            <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=700&h=500&fit=crop" alt="Executive Transport" class="service-image">
+            <div class="service-text">
+                <h2>Professional Travel for <span class="highlight">Business Leaders</span></h2>
+                <p>Designed for CEOs, directors, and corporate guests, our <span class="highlight">executive transport service</span> offers fully-equipped vehicles, trained chauffeurs, and a punctual, discreet experience that supports your business image.</p>
+            </div>
         </div>
     </section>
 
-    <section id="ev" class="service-section">
-        <div class="service-content">
-            <h2>Eco-Friendly Travel for the Future</h2>
-            <p>Join the green movement with our electric vehicle cab service. Enjoy quiet rides, zero emissions, and cost-efficient travel — without compromising on comfort or safety.</p>
+    <section id="ev" class="service-section bg-blue slide-right">
+        <div class="service-content-wrapper reverse">
+            <img src="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=700&h=500&fit=crop" alt="EV Cab Service" class="service-image">
+            <div class="service-text">
+                <h2>Eco-Friendly Travel for the <span class="highlight">Future</span></h2>
+                <p>Join the green movement with our <span class="highlight">electric vehicle cab service</span>. Enjoy quiet rides, zero emissions, and cost-efficient travel — without compromising on comfort or safety.</p>
+            </div>
         </div>
     </section>
 
-    <section id="why-choose" class="service-section why-choose">
-        <div class="service-content">
+    <!-- Why Choose Section -->
+    <section class="why-choose">
+        <div class="why-choose-content">
             <h2>The Corporate Wheels Advantage</h2>
             <ul>
                 <li>✓ Trained, uniformed drivers</li>
@@ -397,12 +507,14 @@
                 <li>✓ Corporate tie-ups & long-term contracts</li>
                 <li>✓ Clean, well-maintained vehicles</li>
                 <li>✓ On-time guarantee</li>
+                <li>✓ Transparent pricing</li>
             </ul>
         </div>
     </section>
 
-    <section class="service-section cta-section">
-        <div class="service-content">
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
             <h2>Ready to Book Your Ride?</h2>
             <p>Our team is available 24/7 to help you plan your trip, schedule corporate travel, or customize a mobility solution for your business.</p>
             <div class="cta-buttons">
@@ -412,21 +524,9 @@
         </div>
     </section>
 
+    <div id="footer-container"></div>
+
     <script>
-        // Custom Cursor
-        const cursor = document.querySelector('.cursor');
-        const follower = document.querySelector('.cursor-follower');
-
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-            
-            setTimeout(() => {
-                follower.style.left = e.clientX + 'px';
-                follower.style.top = e.clientY + 'px';
-            }, 100);
-        });
-
         // Intersection Observer for Scroll Animations
         const sections = document.querySelectorAll('.service-section');
         
@@ -436,43 +536,15 @@
                     entry.target.classList.add('visible');
                 }
             });
-        }, { threshold: 0.2 });
+        }, { threshold: 0.15 });
 
         sections.forEach(section => observer.observe(section));
 
-        // Hover effect for buttons
-        const buttons = document.querySelectorAll('.service-btn, .cta-btn');
-        buttons.forEach(btn => {
-            btn.addEventListener('mouseenter', () => {
-                cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
-                follower.style.transform = 'translate(-50%, -50%) scale(1.5)';
-            });
-            btn.addEventListener('mouseleave', () => {
-                cursor.style.transform = 'translate(-50%, -50%) scale(1)';
-                follower.style.transform = 'translate(-50%, -50%) scale(1)';
-            });
-        });
-    </script>
-     <div id="footer-container"></div>
-
-    <script>
         // Load header
         fetch('header.html')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('header-container').innerHTML = data;
-                const header = document.getElementById('header');
-                if (header) {
-                    window.addEventListener('scroll', () => {
-                        if (window.scrollY > 50) {
-                            header.classList.remove('transparent');
-                            header.classList.add('scrolled');
-                        } else {
-                            header.classList.remove('scrolled');
-                            header.classList.add('transparent');
-                        }
-                    });
-                }
             })
             .catch(error => console.error('Error loading header:', error));
 
@@ -483,25 +555,6 @@
                 document.getElementById('footer-container').innerHTML = data;
             })
             .catch(error => console.error('Error loading footer:', error));
-
-        // Fleet carousel
-        function scrollFleet(direction) {
-            const container = document.getElementById('fleetContainer');
-            const scrollAmount = container.offsetWidth / 3;
-            container.scrollBy({
-                left: direction * scrollAmount,
-                behavior: 'smooth'
-            });
-        }
-
-        // Tab functionality
-        const tabBtns = document.querySelectorAll('.tab-btn');
-        tabBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                tabBtns.forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
     </script>
 </body>
 </html>

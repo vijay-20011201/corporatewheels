@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>corporatewheels - Car Rental Service</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="Icon" href="images/cwlogo.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            margin-top: 0;
+            padding-top: 80px;
+        }
+
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .video-background iframe {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100vw;
+            height: 100vh;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+
+        @media (min-aspect-ratio: 16/9) {
+            .video-background iframe {
+                height: 56.25vw;
+            }
+        }
+
+        @media (max-aspect-ratio: 16/9) {
+            .video-background iframe {
+                width: 177.78vh;
+            }
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 0;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 50px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 50px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text {
+            flex: 1;
+            color: white;
+        }
+
+        .hero-subtitle {
+            color: #1fa2d1;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .hero-title {
+            font-size: 56px;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .hero-description {
+            font-size: 18px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+        }
+
+        .booking-form {
+            background: rgba(56, 56, 56, 0.9);
+            padding: 25px 30px;
+            border-radius: 12px;
+            width: 550px;      /* EXACT width like first image */
+    min-height: 420px; /* Compact height */
+        }
+
+        .form-title {
+            color: white;
+            font-size: 22px;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .vehicle-types {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .vehicle-type {
+            background: #1fa2d1;
+            padding: 12px 8px;
+            text-align: center;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .vehicle-type:hover {
+            background: #1b8fb9;
+            transform: translateY(-3px);
+        }
+
+        .vehicle-icon {
+            width: 45px;
+            height: 28px;
+            margin: 0 auto 10px;
+            fill: white;
+        }
+
+        .vehicle-type span {
+            display: block;
+            color: white;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .form-row-datetime {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 0;
+        }
+
+        .form-group label {
+            display: block;
+            color: white;
+            margin-bottom: 6px;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.08);
+            color: white;
+            font-size: 13px;
+        }
+
+        .form-group input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .form-group select {
+            cursor: pointer;
+        }
+
+        .form-group select option {
+            background: #1a1a1a;
+            color: white;
+        }
+
+        .find-vehicle-btn {
+            width: 100%;
+            background: #1fa2d1;
+            color: #fff;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+
+        .find-vehicle-btn:hover {
+            background: #1b8fb9;
+            transform: translateY(-2px);
+        }
+
+        .scrolling-categories {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: transparent;
+            padding: 30px 0;
+            overflow: hidden;
+            z-index: 2;
+        }
+
+        .categories-track {
+            display: flex;
+            gap: 100px;
+            animation: scroll 30s linear infinite;
+            width: fit-content;
+        }
+
+        .categories-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .category-item {
+            color: #1fa2d1;
+            font-size: 48px;
+            font-weight: 700;
+            white-space: nowrap;
+            text-transform: capitalize;
+        }
+
+        /* ========== SECTION 1: Vehicle Fleet ========== */
+        .vehicle-fleet-section {
+            padding: 100px 50px;
+            background: #f8f9fa;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 48px;
+            color: #1e3a5f;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: #6c757d;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .fleet-carousel {
+            position: relative;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .fleet-container {
+            display: flex;
+            gap: 30px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding: 20px 0;
+            scrollbar-width: none;
+        }
+
+        .fleet-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .vehicle-card {
+            flex: 0 0 calc(33.333% - 20px);
+            min-width: 350px;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .vehicle-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .vehicle-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .vehicle-info {
+            padding: 25px;
+        }
+
+        .vehicle-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .vehicle-name {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e3a5f;
+        }
+
+        .vehicle-likes {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #6c757d;
+        }
+
+        .vehicle-specs {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .spec-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #6c757d;
+            font-size: 14px;
+        }
+
+        .spec-item i {
+            color: #22c55e;
+        }
+
+        .vehicle-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .vehicle-price {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .price-label {
+            font-size: 14px;
+            color: #6c757d;
+        }
+
+        .price-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e3a5f;
+        }
+
+        .rent-btn {
+            background: #22c55e;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .rent-btn:hover {
+            background: #16a34a;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            transition: all 0.3s;
+            z-index: 10;
+            font-size: 18px;
+        }
+
+        .carousel-btn:hover {
+            background: #1fa2d1;
+            color: white;
+        }
+
+        .carousel-btn.prev {
+            left: -25px;
+        }
+
+        .carousel-btn.next {
+            right: -25px;
+        }
+
+        /* ========== SECTION 2: About Us ========== */
+        .about-section {
+            padding: 100px 50px;
+            background: #2a2a2a;
+            color: white;
+        }
+
+        .about-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-content h2 {
+            font-size: 48px;
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+
+        .about-content h2 .highlight {
+            color: #22c55e;
+        }
+
+        .about-content p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #b3b3b3;
+            margin-bottom: 40px;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.05);
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .stat-card:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: #22c55e;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            color: #b3b3b3;
+        }
+
+        /* ========== SECTION 3: Features ========== */
+.features-section {
+    padding: 90px 0;
+    background: #f8faff;
+}
+
+/* Center Title & Description */
+.section-header {
+    text-align: center;
+    max-width: 850px;
+    margin: 0 auto 70px;
+}
+
+.section-header h2 {
+    font-size: 46px;
+    font-weight: 800;
+    color: #0f2553;
+}
+
+.section-header p {
+    font-size: 18px;
+    color: #6b7a92;
+    margin-top: 12px;
+}
+
+/* Main Layout: Left Features | Center Car | Right Features */
+.features-container {
+    max-width: 1500px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 70px;
+}
+
+/* Left & Right Feature Lists */
+.features-list {
+    display: flex;
+    flex-direction: column;
+    gap: 45px;   /* large spacing like reference */
+}
+
+/* Single Feature Item */
+.feature-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+/* Feature Icon Block */
+.feature-icon {
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    background: #16c60c;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.feature-icon i {
+    font-size: 26px;
+    color: white;
+}
+
+/* Text inside feature */
+.feature-content h3 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+    color: #0f2553;
+}
+
+.feature-content p {
+    font-size: 16px;
+    color: #6b7a92;
+    line-height: 1.7;
+    margin-top: 6px;
+}
+
+/* Center Car Image */
+.features-image {
+    text-align: center;
+}
+
+.features-image img {
+    width: 500px;
+    max-width: 100%;
+    border-radius: 18px;
+    display: block;
+}
+
+        /* ========== SECTION 4: Quality ========== */
+        .quality-section {
+            padding: 100px 50px;
+            background: #656464;
+            color: white;
+        }
+
+        .quality-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .quality-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+        }
+
+        .quality-content h2 {
+            font-size: 48px;
+            margin-bottom: 30px;
+        }
+
+        .quality-tabs {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .tab-btn {
+            padding: 12px 30px;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            background: transparent;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .tab-btn.active {
+            background: #22c55e;
+        }
+
+        .tab-btn:not(.active):hover {
+            border-color: #22c55e;
+        }
+
+        .quality-description {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #b3b3b3;
+        }
+
+        /* Journey Section */
+        .journey-section {
+            background: #f1f5f9;
+            padding: 80px 40px;
+        }
+
+        .journey-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .journey-content h3 {
+            font-size: 2.5rem;
+            color: #0a2540;
+            margin-bottom: 25px;
+        }
+
+        .journey-content p {
+            color: #64748b;
+            font-size: 1.1rem;
+            line-height: 1.9;
+        }
+
+        /* What We Offer Section */
+        .offer-section {
+            background: #ffffff;
+            padding: 80px 40px;
+        }
+
+        .offer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .offer-content h3 {
+            font-size: 2.5rem;
+            color: #0a2540;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .offer-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        .offer-card {
+            background: #f8fafc;
+            padding: 40px;
+            border-radius: 12px;
+            border-left: 4px solid #2563eb;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .offer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .offer-card h4 {
+            font-size: 1.5rem;
+            color: #0a2540;
+            margin-bottom: 15px;
+        }
+
+        .offer-card p {
+            color: #64748b;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .hero-content {
+                flex-direction: column;
+            }
+            
+            .booking-form {
+                width: 100%;
+                max-width: 650px;
+            }
+
+            .about-container,
+            .features-container,
+            .quality-container {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .vehicle-card {
+                flex: 0 0 calc(50% - 15px);
+                min-width: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 36px;
+            }
+
+            .section-header h2,
+            .about-content h2,
+            .quality-content h2 {
+                font-size: 32px;
+            }
+
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .carousel-btn {
+                display: none;
+            }
+        }
+
+         
+    </style>
+</head>
+<body>
+    <div id="header-container"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="video-background">
+            <iframe 
+                src="https://www.youtube.com/embed/5qbjKpxfD64?autoplay=1&mute=1&loop=1&playlist=5qbjKpxfD64&controls=0&showinfo=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1" 
+                frameborder="0" 
+                allow="autoplay; encrypted-media" 
+                allowfullscreen>
+            </iframe>
+        </div>
+        <div class="video-overlay"></div>
+
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-subtitle">Fast and Easy Way to Rent a Car</div>
+                <h1 class="hero-title">Explore the world with comfortable car</h1>
+                <p class="hero-description">Embark on unforgettable adventures and discover the world in unparalleled comfort and style with our fleet of exceptionally comfortable cars.</p>
+            </div>
+            <div class="booking-form">
+                <h3 class="form-title">What is your vehicle type?</h3>
+                <div class="vehicle-types">
+                    <div class="vehicle-type">
+                        <img src="images/van-svgrepo-com.svg" alt=""width="100" height="50" rx="1" >
+                        <span>Car rent</span>
+                    </div>
+                    <div class="vehicle-type">
+                        <img src="images/van-svgrepo-com.svg" alt=""width="100" height="50" rx="1" >
+                        <span>Cabs</span>
+                    </div>
+                    <div class="vehicle-type">
+                        <img src="images/van-svgrepo-com.svg" alt=""width="100" height="50" rx="1" >
+                        <span>Transport</span>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Pick Up Location</label>
+                        <input type="text" placeholder="Enter your pickup location">
+                    </div>
+                    <div class="form-group">
+                        <label>Drop Off Location</label>
+                        <input type="text" placeholder="Enter your dropoff location">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Pick Up Date & Time</label>
+                        <div class="form-row-datetime">
+                            <input type="date" id="myDate" value="2025-11-22" min="1900-01-01" max="2100-12-31" required>
+                            <input type="time" id="appointmentTime" min="00:00" max="23:59" step="1800" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Return Date & Time</label>
+                        <div class="form-row-datetime">
+                            <input type="date" id="myDate" value="2025-11-22" min="1900-01-01" max="2100-12-31" required>
+                            <input type="time" id="appointmentTime" min="00:00" max="23:59" step="1800" required>
+                        </div>
+                    </div>
+                </div>
+                <a href="cars.html"><button class="find-vehicle-btn">Find a Vehicle</button></a>
+            </div>
+        </div>
+
+        <div class="scrolling-categories">
+            <div class="categories-track">
+                <span class="category-item">Hatchback</span>
+                <span class="category-item">Crossover</span>
+                <span class="category-item">Convertible</span>
+                <span class="category-item">Sedan</span>
+                <span class="category-item">Sports Car</span>
+                <span class="category-item">Coupe</span>
+                <span class="category-item">Minivan</span>
+                <span class="category-item">Station</span>
+                <span class="category-item">Hatchback</span>
+                <span class="category-item">Crossover</span>
+                <span class="category-item">Convertible</span>
+                <span class="category-item">Sedan</span>
+                <span class="category-item">Sports Car</span>
+                <span class="category-item">Coupe</span>
+                <span class="category-item">Minivan</span>
+                <span class="category-item">Station</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SECTION 1: Our Vehicle Fleet ========== -->
+    <section class="vehicle-fleet-section">
+        <div class="section-header">
+            <h2>Our Vehicle Fleet</h2>
+            <p>Driving your dreams to reality with an exquisite fleet of versatile vehicles for unforgettable journeys.</p>
+        </div>
+
+        <div class="fleet-carousel">
+            <button class="carousel-btn prev" onclick="scrollFleet(-1)">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            
+            <div class="fleet-container" id="fleetContainer">
+                <div class="vehicle-card">
+                    <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=500&h=300&fit=crop" alt="Ferrari Enzo" class="vehicle-image">
+                    <div class="vehicle-info">
+                        <div class="vehicle-header">
+                            <h3 class="vehicle-name">Ferrari Enzo</h3>
+                            <div class="vehicle-likes">
+                                <i class="fas fa-heart"></i>
+                                <span>85</span>
+                            </div>
+                        </div>
+                        <div class="vehicle-specs">
+                            <div class="spec-item"><i class="fas fa-user"></i><span>5</span></div>
+                            <div class="spec-item"><i class="fas fa-suitcase"></i><span>2</span></div>
+                            <div class="spec-item"><i class="fas fa-door-open"></i><span>4</span></div>
+                            <div class="spec-item"><i class="fas fa-car"></i><span>Exotic Car</span></div>
+                        </div>
+                        <div class="vehicle-footer">
+                            <div class="vehicle-price">
+                                <span class="price-label">per day starts from</span>
+                                <span class="price-value">₹ 2500</span>
+                            </div>
+                            <a href="contactform.html"><button class="rent-btn">Contact</button></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="vehicle-card">
+                    <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=500&h=300&fit=crop" alt="Ford Raptor" class="vehicle-image">
+                    <div class="vehicle-info">
+                        <div class="vehicle-header">
+                            <h3 class="vehicle-name">Ford Raptor</h3>
+                            <div class="vehicle-likes">
+                                <i class="fas fa-heart"></i>
+                                <span>59</span>
+                            </div>
+                        </div>
+                        <div class="vehicle-specs">
+                            <div class="spec-item"><i class="fas fa-user"></i><span>5</span></div>
+                            <div class="spec-item"><i class="fas fa-suitcase"></i><span>2</span></div>
+                            <div class="spec-item"><i class="fas fa-door-open"></i><span>4</span></div>
+                            <div class="spec-item"><i class="fas fa-truck"></i><span>Truck</span></div>
+                        </div>
+                        <div class="vehicle-footer">
+                            <div class="vehicle-price">
+                                <span class="price-label">per day starts from</span>
+                                <span class="price-value">₹ 2000</span>
+                            </div>
+                            <a href="contactform.html"><button class="rent-btn">Contact</button></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="vehicle-card">
+                    <img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=500&h=300&fit=crop" alt="Mini Cooper" class="vehicle-image">
+                    <div class="vehicle-info">
+                        <div class="vehicle-header">
+                            <h3 class="vehicle-name">Mini Cooper</h3>
+                            <div class="vehicle-likes">
+                                <i class="fas fa-heart"></i>
+                                <span>19</span>
+                            </div>
+                        </div>
+                        <div class="vehicle-specs">
+                            <div class="spec-item"><i class="fas fa-user"></i><span>5</span></div>
+                            <div class="spec-item"><i class="fas fa-suitcase"></i><span>2</span></div>
+                            <div class="spec-item"><i class="fas fa-door-open"></i><span>4</span></div>
+                            <div class="spec-item"><i class="fas fa-car"></i><span>Hatchback</span></div>
+                        </div>
+                        <div class="vehicle-footer">
+                            <div class="vehicle-price">
+                                <span class="price-label">per day starts from</span>
+                                <span class="price-value">₹ 1500</span>
+                            </div>
+                            <a href="contactform.html"><button class="rent-btn">Contact</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="carousel-btn next" onclick="scrollFleet(1)">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- ========== SECTION 2: About Us ========== -->
+    <section class="about-section">
+        <div class="about-container">
+            <div class="about-content">
+                <h2>We offer customers a wide range of <span class="highlight">commercial cars</span> and <span class="highlight">luxury cars</span> for any occasion.</h2>
+                <p>At our car rental agency, we believe that everyone deserves to experience the pleasure of driving a reliable and comfortable vehicle, regardless of their budget. We have curated a diverse fleet of well-maintained cars, ranging from sleek sedans to spacious SUVs, all at competitive prices. With our streamlined rental process, you can quickly and conveniently reserve your desired vehicle. Whether you need transportation for a business trip, family vacation, or simply want to enjoy a weekend getaway, we have flexible rental options to accommodate your schedule.</p>
+            </div>
+            <div class="about-stats">
+                <div class="stat-card">
+                    <div class="stat-number">19.2k</div>
+                    <div class="stat-label">Completed Orders</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">87.4k</div>
+                    <div class="stat-label">Happy Customers</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">28k</div>
+                    <div class="stat-label">Vehicles Fleet</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">2+</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SECTION 3: Our Features ========== -->
+<section class="features-section">
+    <div class="section-header">
+        <h2>Our Features</h2>
+        <p>Discover a world of convenience, safety, and customization, paving the way for unforgettable adventures and seamless mobility solutions.</p>
+    </div>
+
+    <div class="features-container">
+
+        <!-- LEFT FEATURES -->
+        <div class="features-list">
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <div class="feature-content">
+                    <h3>First class services</h3>
+                    <p>Where luxury meets exceptional care, creating unforgettable moments and exceeding your every expectation.</p>
+                </div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <div class="feature-content">
+                    <h3>24/7 road assistance</h3>
+                    <p>Reliable support when you need it most, keeping you on the move with confidence and peace of mind.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CENTER IMAGE -->
+        <div class="features-image">
+            <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=600&h=400&fit=crop" alt="Mercedes Car">
+        </div>
+
+        <!-- RIGHT FEATURES -->
+        <div class="features-list">
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <i class="fas fa-tag"></i>
+                </div>
+                <div class="feature-content">
+                    <h3>Quality at Minimum Expense</h3>
+                    <p>Unlocking affordable brilliance with elevating quality while minimizing costs for maximum value.</p>
+                </div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div class="feature-content">
+                    <h3>Free Pick-Up & Drop-Off</h3>
+                    <p>Enjoy free pickup and drop-off services, adding an extra layer of ease to your car rental experience.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+    <!-- ========== SECTION 4: Only Quality For Clients ========== -->
+    <section class="quality-section">
+        <div class="quality-container">
+            <div class="quality-image">
+                <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=700&h=500&fit=crop" alt="Driver">
+            </div>
+            <div class="quality-content">
+                <h2>Only Quality For Clients</h2>
+                <div class="quality-tabs">
+                    <button class="tab-btn active">LUXURY</button>
+                    <button class="tab-btn">COMFORT</button>
+                    <button class="tab-btn">PRESTIGE</button>
+                </div>
+                <p class="quality-description">We offer a meticulously curated collection of the most sought-after luxury vehicles on the market. Whether you prefer the sporty allure of a high-performance sports car, the sophistication of a sleek and luxurious sedan, or the versatility of a premium SUV, we have the perfect car to match your discerning taste.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Journey Section -->
+    <div class="journey-section">
+        <div class="journey-content">
+            <h3>Our Journey</h3>
+            <p>Founded with a vision to simplify corporate travel, Corporate Wheel has built a strong foundation in a short span by prioritizing customer satisfaction, service quality, and operational excellence. Today, we proudly serve various companies with customized travel plans and long-term rental options.</p>
+        </div>
+    </div>
+
+    <!-- What We Offer Section -->
+    <div class="offer-section">
+        <div class="offer-content">
+            <h3>What We Offer</h3>
+            <div class="offer-grid">
+                <div class="offer-card">
+                    <h4>Corporate Cab Services</h4>
+                    <p>Daily office commute, client drop/pickup, and on-demand cab bookings.</p>
+                </div>
+                <div class="offer-card">
+                    <h4>Long-Term Car Rentals</h4>
+                    <p>Monthly, yearly, or custom rental plans for organizations.</p>
+                </div>
+                <div class="offer-card">
+                    <h4>Dedicated Corporate Travel Support</h4>
+                    <p>Special team to handle bookings, scheduling, and fleet management.</p>
+                </div>
+                <div class="offer-card">
+                    <h4>Safe & Comfortable Cars</h4>
+                    <p>Well-maintained vehicles with trained chauffeurs.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer-container"></div>
+
+    <script>
+        // Load header
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-container').innerHTML = data;
+                const header = document.getElementById('header');
+                if (header) {
+                    window.addEventListener('scroll', () => {
+                        if (window.scrollY > 50) {
+                            header.classList.remove('transparent');
+                            header.classList.add('scrolled');
+                        } else {
+                            header.classList.remove('scrolled');
+                            header.classList.add('transparent');
+                        }
+                    });
+                }
+            })
+            .catch(error => console.error('Error loading header:', error));
+
+        // Load footer
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading footer:', error));
+
+        // Fleet carousel
+        function scrollFleet(direction) {
+            const container = document.getElementById('fleetContainer');
+            const scrollAmount = container.offsetWidth / 3;
+            container.scrollBy({
+                left: direction * scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+
+        // Tab functionality
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                tabBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
