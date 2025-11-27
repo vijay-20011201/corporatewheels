@@ -1836,6 +1836,74 @@ section {
         html {
             scroll-behavior: smooth;
         }
+        /* CTA Section */
+        .cta-section {
+            background: #ffffff;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .cta-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            font-size: 3rem;
+            color: #1e3a5f;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .cta-content p {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            padding: 18px 45px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #1565c0 0%, #0d47a1 100%);
+            color: #ffffff;
+            box-shadow: 0 8px 25px rgba(21,101,192,0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(21,101,192,0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #1565c0;
+            border: 3px solid #1565c0;
+        }
+
+        .btn-secondary:hover {
+            background: #1565c0;
+            color: #ffffff;
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(21,101,192,0.3);
+        }
+
 
         /* ========== RESPONSIVE ALIGNMENT FIXES ========== */
 
@@ -2700,6 +2768,16 @@ section {
                 <div class="step-number">3️⃣</div>
                 <h3>Confirm & Drive</h3>
                 <p>Our team will finalize your booking, and your car will be ready exactly when you need it.</p>
+            </div>
+        </div>
+    </section>
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Ready to Book Your Ride?</h2>
+            <p>Our team is available 24/7 to help you plan your trip, schedule corporate travel, or customize a mobility solution for your business.</p>
+            <div class="cta-buttons">
+                <a href="contactform.html" class="cta-btn btn-secondary">Contact Us</a>
             </div>
         </div>
     </section>
