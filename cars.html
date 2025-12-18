@@ -293,6 +293,8 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 25px;
+            align-content: start;
+            align-items: start;
         }
 
         .car-card {
@@ -457,51 +459,59 @@
             <div class="filter-section">
                 <h3>Vehicle Type</h3>
                 <div class="filter-option">
-                    <input type="checkbox" id="car" value="Car" onchange="filterCars()">
+                    <input type="checkbox" id="car" value="Etios" onchange="filterCars()">
                     <label for="car">Etios</label>
                 </div>
                 <div class="filter-option">
-                    <input type="checkbox" id="car" value="Car" onchange="filterCars()">
+                    <input type="checkbox" id="car" value="Swift" onchange="filterCars()">
+                    <label for="car">Swift</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="car" value="Ertiga" onchange="filterCars()">
+                    <label for="car">Ertiga</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="car" value="Innova" onchange="filterCars()">
                     <label for="car">Innova</label>
                 </div>
                 <div class="filter-option">
-                    <input type="checkbox" id="car" value="Car" onchange="filterCars()">
+                    <input type="checkbox" id="car" value="Honda" onchange="filterCars()">
                     <label for="car">Honda</label>
                 </div>
                 <div class="filter-option">
-                    <input type="checkbox" id="car" value="Car" onchange="filterCars()">
+                    <input type="checkbox" id="car" value="Camry" onchange="filterCars()">
                     <label for="car">Camry</label>
                 </div>
                 <div class="filter-option">
-                    <input type="checkbox" id="car" value="Car" onchange="filterCars()">
+                    <input type="checkbox" id="car" value="Fortuner" onchange="filterCars()">
                     <label for="car">Fortuner</label>
                 </div>
                 <div class="filter-option">
-                    <input type="checkbox" id="car" value="Car" onchange="filterCars()">
+                    <input type="checkbox" id="car" value="Benz" onchange="filterCars()">
                     <label for="car">Benz</label>
                 </div>
                 <div class="filter-option">
-                    <input type="checkbox" id="van" value="Van" onchange="filterCars()">
+                    <input type="checkbox" id="van" value="Bmw" onchange="filterCars()">
                     <label for="van">BMW</label>
                 </div>
                 <div class="filter-option">
-                    <input type="checkbox" id="minibus" value="Minibus" onchange="filterCars()">
+                    <input type="checkbox" id="minibus" value="Audi" onchange="filterCars()">
                     <label for="minibus">Audi</label>
                 </div>
                 <div class="filter-option">
-                    <input type="checkbox" id="prestige" value="Prestige" onchange="filterCars()">
+                    <input type="checkbox" id="prestige" value="Force" onchange="filterCars()">
                     <label for="prestige">Force</label>
                 </div>
                 <div class="filter-option">
-                    <input type="checkbox" id="prestige" value="Prestige" onchange="filterCars()">
+                    <input type="checkbox" id="prestige" value="Toyota" onchange="filterCars()">
                     <label for="prestige">Toyota</label>
                 </div>
                 <div class="filter-option">
-                    <input type="checkbox" id="prestige" value="Prestige" onchange="filterCars()">
+                    <input type="checkbox" id="prestige" value="Minibus" onchange="filterCars()">
                     <label for="prestige">Mini Bus</label>
                 </div>
                 <div class="filter-option">
-                    <input type="checkbox" id="prestige" value="Prestige" onchange="filterCars()">
+                    <input type="checkbox" id="prestige" value="Bus" onchange="filterCars()">
                     <label for="prestige">Bus</label>
                 </div>
                 
@@ -510,10 +520,7 @@
             <!-- Car Body Type Filter -->
             <div class="filter-section">
                 <h3>Car Body Type</h3>
-                <div class="filter-option">
-                    <input type="checkbox" id="convertible" value="Convertible" onchange="filterCars()">
-                    <label for="convertible">Convertible</label>
-                </div>
+                
                 <div class="filter-option">
                     <input type="checkbox" id="exotic" value="Exotic Cars" onchange="filterCars()">
                     <label for="exotic">Exotic Cars</label>
@@ -523,27 +530,25 @@
                     <label for="hatchback">Hatchback</label>
                 </div>
                 <div class="filter-option">
-                    <input type="checkbox" id="minivan" value="Minivan" onchange="filterCars()">
-                    <label for="minivan">Mini Bus</label>
+                    <input type="checkbox" id="minivan" value="TT" onchange="filterCars()">
+                    <label for="tt">TT MiniVan</label>
                 </div>
-                <div class="filter-option">
-                    <input type="checkbox" id="truck" value="Truck" onchange="filterCars()">
-                    <label for="truck">Truck</label>
-                </div>
+                
+
                 <div class="filter-option">
                     <input type="checkbox" id="sedan" value="Sedan" onchange="filterCars()">
                     <label for="sedan">Sedan</label>
                 </div>
                 <div class="filter-option">
                     <input type="checkbox" id="sports" value="Sports Car" onchange="filterCars()">
-                    <label for="sports">Sports Car</label>
+                    <label for="sports">Bus</label>
                 </div>
                 <div class="filter-option">
-                    <input type="checkbox" id="wagon" value="Station Wagon" onchange="filterCars()">
-                    <label for="wagon">Station Wagon</label>
+                    <input type="checkbox" id="mpv" value="Mpv" onchange="filterCars()">
+                    <label for="mpv">Mpv</label>
                 </div>
                 <div class="filter-option">
-                    <input type="checkbox" id="suv" value="SUV" onchange="filterCars()">
+                    <input type="checkbox" id="suv" value="Suv" onchange="filterCars()">
                     <label for="suv">SUV</label>
                 </div>
             </div>
@@ -615,7 +620,7 @@
                 <h3>Price (₹)</h3>
                 <div class="price-inputs">
                     <input type="number" id="minPrice" placeholder="Min: 0" min="0" onchange="filterCars()">
-                    <input type="number" id="maxPrice" placeholder="Max: 5000" min="0" onchange="filterCars()">
+                    <input type="number" id="maxPrice" placeholder="Max: 15000" min="0" onchange="filterCars()">
                 </div>
             </div>
         </aside>
@@ -629,18 +634,33 @@
     <script>
         // Sample car data
         const carsData = [
-            { id: 1, name: "Jeep Renegade", type: "Car", bodyType: "SUV", seats: 5, price: 2600, rating: 25, image: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=400", passengers: 5, doors: 4, transmission: "Manual" },
-            { id: 2, name: "Mini Cooper", type: "Car", bodyType: "Hatchback", seats: 4, price: 2440, rating: 70, image: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=400", passengers: 4, doors: 2, transmission: "Automatic" },
-            { id: 3, name: "Ferrari Enzo", type: "Prestige", bodyType: "Exotic Cars", seats: 2, price: 3085, rating: 58, image: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=400", passengers: 2, doors: 2, transmission: "Automatic" },
-            { id: 4, name: "Ford Raptor", type: "Car", bodyType: "Truck", seats: 5, price: 2247, rating: 16, image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=400", passengers: 5, doors: 4, transmission: "Manual" },
-            { id: 5, name: "Mini Cooper", type: "Car", bodyType: "Hatchback", seats: 4, price: 2380, rating: 43, image: "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=400", passengers: 4, doors: 2, transmission: "Automatic" },
-            { id: 6, name: "VW Polo", type: "Car", bodyType: "Hatchback", seats: 5, price: 1068, rating: 30, image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=400", passengers: 5, doors: 4, transmission: "Manual" },
-            { id: 7, name: "Chevrolet Camaro", type: "Car", bodyType: "Sports Car", seats: 4, price: 2450, rating: 32, image: "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=400", passengers: 4, doors: 2, transmission: "Automatic" },
-            { id: 8, name: "Hyundai Staria", type: "Van", bodyType: "Minivan", seats: 5, price: 2200, rating: 23, image: "https://images.unsplash.com/photo-1527786356703-4b100091cd2c?w=400", passengers: 7, doors: 4, transmission: "Automatic" },
-            { id: 9, name: "Toyota Rav 4", type: "Car", bodyType: "SUV", seats: 5, price: 2814, rating: 82, image: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=400", passengers: 5, doors: 4, transmission: "Automatic" },
-            { id: 10, name: "Bentley", type: "Prestige", bodyType: "Sedan", seats: 5, price: 3025, rating: 45, image: "https://images.unsplash.com/photo-1563720360172-67b8f3dce741?w=400", passengers: 5, doors: 4, transmission: "Automatic" },
-            { id: 11, name: "Lexus", type: "Prestige", bodyType: "Sedan", seats: 5, price: 2000, rating: 61, image: "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=400", passengers: 5, doors: 4, transmission: "Automatic" },
-            { id: 12, name: "Range Rover", type: "Prestige", bodyType: "SUV", seats: 5, price: 2280, rating: 82, image: "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=400", passengers: 5, doors: 4, transmission: "Automatic" }
+            { id: 1, name: "Etios", type: "Etios", bodyType: "Sedan", seats: 5, price: 1900, rating: 25, image: "/images/etios.jpeg", passengers: 5, doors: 4, transmission: "Manual" },
+            { id: 2, name: "Innova Crysta", type: "Innova", bodyType: "mpv", seats: 8, price: 3000, rating: 70, image: "/images/innovacrysta.jpeg", passengers: 8, doors: 4, transmission: "Automatic" },
+            { id: 3, name: "Innove Crysta New Version", type: "Innova", bodyType: "Exotic Cars", seats: 8, price: 3300, rating: 58, image: "/images/innovacrystanew.jpeg", passengers: 8, doors: 4, transmission: "Automatic" },
+            { id: 4, name: "Innova Hycross", type: "Innova", bodyType: "Innova", seats: 7, price: 3800, rating: 16, image: "/images/hycross.jpeg", passengers: 7, doors: 4, transmission: "Automatic" },
+            { id: 5, name: "Honda City", type: "Honda", bodyType: "Sedan", seats: 4, price: 3000, rating: 43, image: "/images/hondacity.jpeg", passengers: 4, doors: 4, transmission: "Manual" },
+            { id: 6, name: "Camry", type: "Camry", bodyType: "Hatchback", seats: 5, price: 5000, rating: 30, image: "/images/camry.jpeg", passengers: 5, doors: 4, transmission: "Automatic" },
+            { id: 7, name: "Fortuner", type: "Fortuner", bodyType: "Suv", seats: 7, price: 5000, rating: 32, image: "/images/fortunernew.jpeg", passengers: 7, doors: 4, transmission: "Automatic" },
+            { id: 8, name: "Carnival Lumousine", type: "Van", bodyType: "Mpv", seats: 7, price: 6000, rating: 23, image: "/images/carnival.jpeg", passengers: 7, doors: 4, transmission: "Automatic" },
+            { id: 9, name: "Fortuner Legender", type: "Fortuner", bodyType: "Suv", seats: 7, price: 7000, rating: 82, image: "/images/fortunerlegender.jpeg", passengers: 7, doors: 4, transmission: "Automatic" },
+            { id: 10, name: "Benz E class", type: "Benz", bodyType: "Sedan", seats: 5, price: 8000, rating: 45, image: "/images/benzeclass.jpeg", passengers: 5, doors: 4, transmission: "Automatic" },
+            { id: 11, name: "Bmw 5", type: "Bmw", bodyType: "Hatchback", seats: 5, price: 9000, rating: 61, image: "/images/bmw5.jpeg", passengers: 5, doors: 4, transmission: "Automatic" },
+            { id: 12, name: "Benz E Class 2023 Version", type: "Benz", bodyType: "Sedan", seats: 5, price: 10000, rating: 82, image: "/images/benzeclass2023.jpeg", passengers: 5, doors: 4, transmission: "Automatic" },
+            { id: 13, name: "Benz S Class 19/20 Version", type: "Benz", bodyType: "Sedan", seats: 5, price: 15000, rating: 82, image: "/images/benzsclass19.jpeg", passengers: 5, doors: 4, transmission: "Automatic" },
+            { id: 14, name: "Benz GLS", type: "Benz", bodyType: "Sedan", seats: 5, price: 15000, rating: 82, image: "/images/benzgls.jpeg", passengers: 5, doors: 4, transmission: "Automatic" },
+            { id: 15, name: "Benz V Class", type: "Benz", bodyType: "Sedan", seats: 5, price: 15000, rating: 82, image: "/images/benzvclass.jpeg", passengers: 5, doors: 4, transmission: "Automatic" },
+            { id: 16, name: "Toyota Commuter 8/9 Seater", type: "Toyota", bodyType: "Mpv", seats: 8, price: 8000, rating: 82, image: "/images/toyotacommuter.jpeg", passengers: 8, doors: 4, transmission: "Automatic" },
+            { id: 17, name: "Force Urbania 10+D Maharaja Seat", type: "Force", bodyType: "Mpv", seats: 10, price: 7000, rating: 82, image: "/images/forceurbania10.jpeg", passengers: 10, doors: 2, transmission: "Manual" },
+            { id: 18, name: "Force Urbania 9+D Maharaja Seat", type: "Force", bodyType: "Mpv", seats: 9, price: 6500, rating: 82, image: "/images/forceurbania9.jpeg", passengers: 9, doors: 2, transmission: "Manual" },
+            { id: 19, name: "PKN TT Luxury 11+D Maharaja Seat", type: "Minibus", bodyType: "TT", seats: 11, price: 6500, rating: 82, image: "/images/tt11.jpeg", passengers: 11, doors: 2, transmission: "Manual" },
+            { id: 20, name: "TT Luxury 9+D Maharaja Seat", type: "Minibus", bodyType: "TT", seats: 9, price: 5000, rating: 82, image: "/images/tt11.jpeg", passengers: 9, doors: 2, transmission: "Manual" },
+            { id: 21, name: "PKN TT Luxury 12+1-Seater 2+1", type: "Minibus", bodyType: "TT", seats: 15, price: 5000, rating: 82, image: "/images/tt11.jpeg", passengers: 15, doors: 2, transmission: "Manual" },
+            { id: 22, name: "TT Semi Luxury 12+1-Seater", type: "Minibus", bodyType: "TT", seats: 13, price: 4500, rating: 82, image: "/images/tt11.jpeg", passengers: 13, doors: 2, transmission: "Manual" },
+            { id: 23, name: "PKN TT Semi Luxury 15/19+1-Seater 2+1", type: "Minibus", bodyType: "TT", seats: 20, price: 6500, rating: 82, image: "/images/tt11.jpeg", passengers: 20, doors: 2, transmission: "Manual" },
+            { id: 24, name: "Minibus 32-seater A/C", type: "Bus", bodyType: "Sports Car", seats: 32, price: 8500, rating: 82, image: "/images/minibus32.jpeg", passengers: 32, doors: 2, transmission: "Manual" },
+            { id: 25, name: "Bus 49-Seater A/C", type: "Bus", bodyType: "Sports Car", seats: 49, price: 11500, rating: 82, image: "/images/bus49.jpeg", passengers: 49, doors: 2, transmission: "Manual" },    
+            { id: 26, name: "Swift Dzire", type: "Swift", bodyType: "Sedan", seats: 5, price: 1900, rating: 25, image: "/images/swift.jpeg", passengers: 5, doors: 4, transmission: "Manual" },        
+            { id: 27, name: "Ertiga", type: "Ertiga", bodyType: "Mpv", seats: 7, price: 2600, rating: 25, image: "/images/ertiga.jpeg", passengers: 7, doors: 4, transmission: "Manual" },
         ];
 
         // Display all cars initially
